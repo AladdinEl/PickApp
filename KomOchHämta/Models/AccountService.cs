@@ -1,7 +1,7 @@
 ﻿
 using KomOchHämta.Views.Account;
 
-namespace IdentityDemo.Models
+namespace KomOchHämta.Models
 {
 	public class AccountService
 	{

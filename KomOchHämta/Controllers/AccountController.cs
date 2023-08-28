@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using KomOchHämta.Models;
 using KomOchHämta.Views.Account;
 
-namespace IdentityDemo.Controllers
+namespace KomOchHämta.Controllers
 {
 	public class AccountController : Controller
 	{
