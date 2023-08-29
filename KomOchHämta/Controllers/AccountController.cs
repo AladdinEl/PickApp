@@ -30,23 +30,28 @@ namespace KomOchHämta.Controllers
 			return View();
 		}
 
+
+
 		[HttpPost("register")]
-		public IActionResult Register(RegisterVM viewModel)
+
+		public async Task<IActionResult> RegisterAsync(RegisterVM viewModel)
 		{
 			if (!ModelState.IsValid)
+
 				return View();
 
-			// Try to register user
-			var errorMessage = accountService.TryRegister(viewModel);
+			var errorMessage = await accountService.TryRegisterAsync(viewModel);
+
 			if (errorMessage != null)
+
 			{
-				// Show error
 				ModelState.AddModelError(string.Empty, errorMessage);
+
 				return View();
 			}
 
-			// Redirect user
 			return RedirectToAction(nameof(Login));
+
 		}
 
 		[HttpGet("login")]
@@ -56,22 +61,26 @@ namespace KomOchHämta.Controllers
 		}
 
 		[HttpPost("login")]
-		public IActionResult Login(LoginVM viewModel)
+		public async Task<IActionResult> LoginAsync(LoginVM viewModel)
 		{
 			if (!ModelState.IsValid)
 				return View();
 
-			// Check if credentials is valid (and set auth cookie)
-			var errorMessage = accountService.TryLogin(viewModel);
+			var errorMessage = await accountService.TryLoginAsync(viewModel);
 			if (errorMessage != null)
 			{
-				// Show error
 				ModelState.AddModelError(string.Empty, errorMessage);
 				return View();
 			}
-
-			// Redirect user
 			return RedirectToAction(nameof(Members));
 		}
+
+		[HttpGet("/logout")]
+		public async Task<IActionResult> LogOutAsync()
+		{
+			await accountService.TryLogOutAsync();
+			return RedirectToAction(nameof(Register));
+		}
+
 	}
 }
