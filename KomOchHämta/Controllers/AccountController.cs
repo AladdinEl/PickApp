@@ -18,11 +18,6 @@ namespace KomOchHämta.Controllers
 			this.accountService = accountService;
 		}
 
-		[HttpGet("members")]
-		public IActionResult Members()
-		{
-			return View();
-		}
 
 		[HttpGet("register")]
 		public IActionResult Register()
@@ -72,14 +67,14 @@ namespace KomOchHämta.Controllers
 				ModelState.AddModelError(string.Empty, errorMessage);
 				return View();
 			}
-			return RedirectToAction(nameof(Members));
+			return RedirectToAction("Members", "Products");
 		}
 
 		[HttpGet("/logout")]
 		public async Task<IActionResult> LogOutAsync()
 		{
 			await accountService.TryLogOutAsync();
-			return RedirectToAction(nameof(Register));
+			return RedirectToAction(nameof(Login));
 		}
 
 	}

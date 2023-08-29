@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KomOchHämta.Views.Account
+namespace KomOchHämta.Views.Products
 {
-	public class MembersVM
-	{
-	}
+    public class MembersVM
+    {
+    }
 }

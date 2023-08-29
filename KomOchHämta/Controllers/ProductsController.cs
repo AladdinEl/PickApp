@@ -16,6 +16,10 @@ namespace KomOchHämta.Controllers
         [HttpGet("")]
 		public IActionResult Index()
 		{
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction(nameof(Members));
+            }
 			var products = dataService.GetAllProducts();
             return View(products);
 		}
@@ -26,5 +30,11 @@ namespace KomOchHämta.Controllers
             var products = dataService.SearchProducts(search);
             return View(products);
         }
+
+		[HttpGet("members")]
+		public IActionResult Members()
+		{
+			return View();
+		}
 	}
 }
