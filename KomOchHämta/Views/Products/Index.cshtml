@@ -1,0 +1,14 @@
+﻿@model KomOchHämta.Views.Products.IndexVM[]
+
+    <h1>Kom och hämta</h1>
+<form asp-controller="Products" asp-action="SearchProducts">
+    <label for="search">Sök produkt</label>
+<input type="search" name="search" id="search" placeholder="Sök..."/>
+<button type="submit">Sök</button>
+</form>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.ProductName (@item.Image)</li>
+    }
+</ul>

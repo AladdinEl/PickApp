@@ -24,7 +24,6 @@ namespace KomOchHämta.Controllers
 			return View();
 		}
 
-		[HttpGet("")]
 		[HttpGet("register")]
 		public IActionResult Register()
 		{
