@@ -46,18 +46,18 @@ namespace KomOchHämta.Controllers
             return View(products);
         }
 
-        [HttpGet("/Details")]
+        [HttpGet("/Details/{id}")]
         public IActionResult Details(int id)
         {
             var model = dataService.GetById(id);
             return View(model);
         }
 
-        [HttpPost("/Details")]
-        public IActionResult Reserve(int id)
+        [HttpPost("/Details/{id}")]
+        public IActionResult Details(DetailsVM details)
         {
-            dataService.Reserve(id);
-            return View();
+            dataService.Reserve(details);
+            return RedirectToAction(nameof(Details));
         }
     }
 }

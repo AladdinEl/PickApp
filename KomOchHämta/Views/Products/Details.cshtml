@@ -7,5 +7,7 @@
 	@Model.Created
 	@Model.Reserved
 </div>
+<form asp-controller ="Products" asp-action="Details" asp-route-id="@Model.Id">
+	<input type="submit" value="Reservera" />
+</form>
 
-<button asp-controller="Products" asp-action="Reserve">Reservera</button>

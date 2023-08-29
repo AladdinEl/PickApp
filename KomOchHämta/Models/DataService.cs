@@ -89,15 +89,15 @@ namespace KomOchHämta.Models
                     ProductName = o.ProductName,
                     Created = o.Created,
                     Description = o.Description,
-                    Image = o.Image
+                    Image = o.Image,
+                    Reserved = o.Reserved,
                 })
                 .SingleOrDefault();
                     
         }
-
-        internal void Reserve(int id)
-        {
-            var model = context.Products.Find(id);
+        internal void Reserve(DetailsVM details)
+        {              
+            var model = context.Products.Find(details.Id);
             model.Reserved = true;
             context.SaveChanges();
         }
