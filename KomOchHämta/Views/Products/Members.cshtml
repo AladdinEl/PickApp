@@ -1,2 +1,16 @@
-﻿<h3>Members</h3>
+﻿@model MembersVM[]
+
+<h3>Members</h3>
 Welcome member - you are logged in as: @User.Identity.Name
+
+<form asp-controller="Products" asp-action="SearchProductsMember">
+    <label for="search">Sök produkt</label>
+    <input type="search" name="search" id="search" placeholder="Sök..." />
+    <button type="submit">Sök</button>
+</form>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.ProductName (@item.Image)</li>
+    }
+</ul>

@@ -32,14 +32,27 @@ namespace KomOchHämta.Models
                     Image = o.Image
                 })
             .ToArray();
+
+        }
+        public MembersVM[] GetAllProductsMember()
+        {
+            return context.Products
+            .OrderBy(o => o.Created)
+                .Select(o => new MembersVM
+                {
+                    Id = o.Id,
+                    ProductName = o.ProductName,
+                    Image = o.Image
+                })
+            .ToArray();
         }
 
         public IndexVM[] SearchProducts(string search)
         {
-            if (search != null)
-            {
-            return context.Products
-            .Where(o => o.ProductName.Contains(search))
+            var product = context.Products.Where(o => o.ProductName.Contains(search));
+            var result = search != null ? product : context.Products;
+
+            return result
             .OrderBy(o => o.Created)
                 .Select(o => new IndexVM
                 {
@@ -48,21 +61,22 @@ namespace KomOchHämta.Models
                     Image = o.Image
                 })
             .ToArray();
-            }
-            else
-            {
-                return context.Products
+        }
+
+        public MembersVM[] SearchProductsMember(string search)
+        {
+            var product = context.Products.Where(o => o.ProductName.Contains(search));
+            var result = search != null ? product : context.Products;
+            
+                return result
                 .OrderBy(o => o.Created)
-                    .Select(o => new IndexVM
+                    .Select(o => new MembersVM
                     {
                         Id = o.Id,
                         ProductName = o.ProductName,
                         Image = o.Image
                     })
                 .ToArray();
-            }
         }
-
-        
     }
 }

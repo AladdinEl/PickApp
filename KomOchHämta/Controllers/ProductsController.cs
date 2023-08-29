@@ -34,7 +34,15 @@ namespace KomOchHämta.Controllers
 		[HttpGet("members")]
 		public IActionResult Members()
 		{
-			return View();
-		}
-	}
+            var products = dataService.GetAllProductsMember();
+            return View(products);
+        }
+
+        [HttpPost("members")]
+        public IActionResult Members(string search)
+        {
+            var products = dataService.SearchProductsMember(search);
+            return View(products);
+        }
+    }
 }
