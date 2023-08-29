@@ -1,0 +1,11 @@
+﻿@model DetailsVM
+
+<div>
+	@Model.ProductName,
+	@Model.Image,
+	@Model.Description
+	@Model.Created
+	@Model.Reserved
+</div>
+
+<button asp-controller="Products" asp-action="Reserve">Reservera</button>

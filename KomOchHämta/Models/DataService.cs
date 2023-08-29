@@ -78,5 +78,28 @@ namespace KomOchHämta.Models
                     })
                 .ToArray();
         }
+
+        internal DetailsVM? GetById(int id)
+        {
+            return context.Products
+                .Where(o => o.Id == id)
+                .Select(o => new DetailsVM
+                {
+                    Id = o.Id,
+                    ProductName = o.ProductName,
+                    Created = o.Created,
+                    Description = o.Description,
+                    Image = o.Image
+                })
+                .SingleOrDefault();
+                    
+        }
+
+        internal void Reserve(int id)
+        {
+            var model = context.Products.Find(id);
+            model.Reserved = true;
+            context.SaveChanges();
+        }
     }
 }

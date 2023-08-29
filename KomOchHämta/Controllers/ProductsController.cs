@@ -1,4 +1,5 @@
 ﻿using KomOchHämta.Models;
+using KomOchHämta.Views.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KomOchHämta.Controllers
@@ -43,6 +44,20 @@ namespace KomOchHämta.Controllers
         {
             var products = dataService.SearchProductsMember(search);
             return View(products);
+        }
+
+        [HttpGet("/Details")]
+        public IActionResult Details(int id)
+        {
+            var model = dataService.GetById(id);
+            return View(model);
+        }
+
+        [HttpPost("/Details")]
+        public IActionResult Reserve(int id)
+        {
+            dataService.Reserve(id);
+            return View();
         }
     }
 }
