@@ -1,6 +1,6 @@
-﻿namespace KomOchHämta.Models
+﻿namespace KomOchHämta.Views.Products
 {
-    public class Product
+    public class CreateNewVM
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
@@ -12,6 +12,5 @@
         public int UserId { get; set; }
         public string? Location { get; set; }
         public string? Message { get; set; }
-
     }
 }

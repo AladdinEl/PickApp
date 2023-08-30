@@ -27,14 +27,6 @@ namespace KomOchHämta.Models
 
 			base.OnModelCreating(modelBuilder);
 
-
-
-
-
-
-
-
-
 			// Specificerar data som en specific tabell ska för-populeras med
 
 			modelBuilder.Entity<Product>().HasData(
@@ -44,7 +36,6 @@ namespace KomOchHämta.Models
 			  new Product { Id = 3, ProductName = "Stol", Image = "Bild3", Description = "Rea", Created = DateTime.Now }
 			  );
 		}
-
 
 	}
 }

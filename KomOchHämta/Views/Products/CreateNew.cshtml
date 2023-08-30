@@ -1,0 +1,27 @@
+﻿@model CreateNewVM
+
+<form asp-controller="Products" asp-action="CreateNew" method="post" enctype="multipart/form-data">
+	<div>
+		<label asp-for="ProductName"></label>
+		<input asp-for="ProductName" />
+	</div>
+	<div>
+		<label asp-for="Image"></label>
+		<input asp-for="Image" type="file" />
+	</div>
+	<div>
+		<label asp-for="Description"></label>
+		<input asp-for="Description" />
+	</div>
+	<div>
+		<label asp-for="Location"></label>
+		<input asp-for="Location" />
+	</div>
+	<div>
+		<label asp-for="Message"></label>
+		<input asp-for="Message" />
+	</div>
+	<div>
+		<input type="submit" value="Skapa" />
+	</div>
+</form>

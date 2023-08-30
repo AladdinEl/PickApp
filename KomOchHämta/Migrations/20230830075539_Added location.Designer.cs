@@ -4,6 +4,7 @@ using KomOchHämta.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KomOchHämta.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230830075539_Added location")]
+    partial class Addedlocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,9 +112,6 @@ namespace KomOchHämta.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -130,7 +130,7 @@ namespace KomOchHämta.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1128),
+                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8804),
                             Description = "Dyr",
                             Image = "Bild1",
                             ProductName = "Lampa",
@@ -140,7 +140,7 @@ namespace KomOchHämta.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1187),
+                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8903),
                             Description = "Billig",
                             Image = "Bild2",
                             ProductName = "Soffa",
@@ -150,7 +150,7 @@ namespace KomOchHämta.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1189),
+                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8906),
                             Description = "Rea",
                             Image = "Bild3",
                             ProductName = "Stol",

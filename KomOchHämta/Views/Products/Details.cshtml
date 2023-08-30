@@ -8,6 +8,6 @@
 	@Model.Reserved
 </div>
 <form asp-controller ="Products" asp-action="Details" asp-route-id="@Model.Id">
-	<input type="submit" value="Reservera" />
+	<input type="submit" value="@(Model.Reserved ? "Avboka": "Reservera")" />
 </form>
 

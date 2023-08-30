@@ -95,11 +95,15 @@ namespace KomOchHämta.Models
                 .SingleOrDefault();
                     
         }
-        internal void Reserve(DetailsVM details)
+        internal void Reserve(DetailsVM details/*, int userId*/)
         {              
             var model = context.Products.Find(details.Id);
-            model.Reserved = true;
-            context.SaveChanges();
+            if (model != null /*&& !model.Reserved*/)
+            {
+                model.Reserved = !model.Reserved;
+                //model.UserId = userId;
+                context.SaveChanges();
+            }
         }
     }
 }
