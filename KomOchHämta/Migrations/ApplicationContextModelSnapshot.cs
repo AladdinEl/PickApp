@@ -103,7 +103,6 @@ namespace KomOchHämta.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
@@ -119,10 +118,12 @@ namespace KomOchHämta.Migrations
                     b.Property<bool>("Reserved")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
 
@@ -130,32 +131,29 @@ namespace KomOchHämta.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1128),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4361),
                             Description = "Dyr",
                             Image = "Bild1",
                             ProductName = "Lampa",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1187),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4413),
                             Description = "Billig",
                             Image = "Bild2",
                             ProductName = "Soffa",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 30, 10, 2, 25, 367, DateTimeKind.Local).AddTicks(1189),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4415),
                             Description = "Rea",
                             Image = "Bild3",
                             ProductName = "Stol",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         });
                 });
 
@@ -292,6 +290,15 @@ namespace KomOchHämta.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("KomOchHämta.Models.Product", b =>
+                {
+                    b.HasOne("KomOchHämta.Models.ApplicationUser", "User")
+                        .WithMany("Products")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -341,6 +348,11 @@ namespace KomOchHämta.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KomOchHämta.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

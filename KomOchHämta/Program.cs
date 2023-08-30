@@ -17,10 +17,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 
 
-
 builder.Services.ConfigureApplicationCookie(
 	o => o.LoginPath = "/login");
 
+builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();

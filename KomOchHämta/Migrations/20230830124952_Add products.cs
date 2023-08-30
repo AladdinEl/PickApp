@@ -8,19 +8,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KomOchHämta.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedProducts : Migration
+    public partial class Addproducts : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Created", "Description", "Image", "ProductName" },
+                columns: new[] { "Id", "Created", "Description", "Image", "Location", "Message", "ProductName", "Reserved", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 8, 29, 11, 23, 37, 905, DateTimeKind.Local).AddTicks(9265), "Dyr", "Bild1", "Lampa" },
-                    { 2, new DateTime(2023, 8, 29, 11, 23, 37, 905, DateTimeKind.Local).AddTicks(9365), "Billig", "Bild2", "Soffa" },
-                    { 3, new DateTime(2023, 8, 29, 11, 23, 37, 905, DateTimeKind.Local).AddTicks(9368), "Rea", "Bild3", "Stol" }
+                    { 1, new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4361), "Dyr", "Bild1", null, null, "Lampa", false, null },
+                    { 2, new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4413), "Billig", "Bild2", null, null, "Soffa", false, null },
+                    { 3, new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4415), "Rea", "Bild3", null, null, "Stol", false, null }
                 });
         }
 

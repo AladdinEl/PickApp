@@ -1,4 +1,7 @@
-﻿using KomOchHämta.Views.Products;
+﻿using KomOchHämta.Controllers;
+using KomOchHämta.Views.Products;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace KomOchHämta.Models
 {
@@ -6,6 +9,9 @@ namespace KomOchHämta.Models
     {
 
         ApplicationContext context;
+        private readonly UserManager<ApplicationUser> userManager;
+        string userID;
+
 
         //// "Fejk-databas"
         //List<Product> products = new List<Product>
@@ -15,10 +21,16 @@ namespace KomOchHämta.Models
         //    new Product { Id = 11, ProductName = "Stol", Image = "Bild3", Description ="Rea", Created=DateTime.Now},
         //};
 
-        public DataService(ApplicationContext context)
+        public DataService(ApplicationContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor accessor)
         {
             this.context = context;
+            this.userManager = userManager;
+            this.userID = userManager.GetUserId(accessor.HttpContext.User);
+
+
         }
+
+
 
 
         public IndexVM[] GetAllProducts()
@@ -105,5 +117,22 @@ namespace KomOchHämta.Models
                 context.SaveChanges();
             }
         }
+
+        public void AddProduct(CreateNewVM newProduct)
+        {
+            //var userID = userManager.GetUserId(userID);
+
+            context.Products.Add(new Product
+            {
+                ProductName = newProduct.ProductName,
+                Description = newProduct.Description,
+                //Image = newProduct.Image,                            
+                Message = newProduct.Message,
+                Location = newProduct.Location,
+                UserId = userID
+            });
+            context.SaveChanges();
+        }
+
     }
 }

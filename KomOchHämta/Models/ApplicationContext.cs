@@ -19,13 +19,17 @@ namespace KomOchHämta.Models
 
 		public DbSet<Product> Products { get; set; }
 
-	
+		
+		
+
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 		{
 
 			base.OnModelCreating(modelBuilder);
+
+			
 
 			// Specificerar data som en specific tabell ska för-populeras med
 

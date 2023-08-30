@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KomOchHämta.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230830075539_Added location")]
-    partial class Addedlocation
+    [Migration("20230830124952_Add products")]
+    partial class Addproducts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,10 +106,12 @@ namespace KomOchHämta.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
@@ -119,10 +121,12 @@ namespace KomOchHämta.Migrations
                     b.Property<bool>("Reserved")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
 
@@ -130,32 +134,29 @@ namespace KomOchHämta.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8804),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4361),
                             Description = "Dyr",
                             Image = "Bild1",
                             ProductName = "Lampa",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8903),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4413),
                             Description = "Billig",
                             Image = "Bild2",
                             ProductName = "Soffa",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 30, 9, 55, 39, 264, DateTimeKind.Local).AddTicks(8906),
+                            Created = new DateTime(2023, 8, 30, 14, 49, 52, 730, DateTimeKind.Local).AddTicks(4415),
                             Description = "Rea",
                             Image = "Bild3",
                             ProductName = "Stol",
-                            Reserved = false,
-                            UserId = 0
+                            Reserved = false
                         });
                 });
 
@@ -292,6 +293,15 @@ namespace KomOchHämta.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("KomOchHämta.Models.Product", b =>
+                {
+                    b.HasOne("KomOchHämta.Models.ApplicationUser", "User")
+                        .WithMany("Products")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -341,6 +351,11 @@ namespace KomOchHämta.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KomOchHämta.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

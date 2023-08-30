@@ -1,5 +1,6 @@
 ﻿using KomOchHämta.Models;
 using KomOchHämta.Views.Products;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KomOchHämta.Controllers
@@ -9,9 +10,12 @@ namespace KomOchHämta.Controllers
 
         DataService dataService;
 
+       
+
         public ProductsController(DataService dataService) // Injicera en DataService
         {
             this.dataService = dataService;
+            
         }
 
         [HttpGet("")]
@@ -58,6 +62,24 @@ namespace KomOchHämta.Controllers
         {
             dataService.Reserve(details);
             return RedirectToAction(nameof(Details));
+        }
+
+        [HttpGet("/CreateNew")]
+        public IActionResult CreateNew()
+        { 
+            return View();
+        }
+
+        [HttpPost("/CreateNew")]
+        public IActionResult CreateNew(CreateNewVM newProduct) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            dataService.AddProduct(newProduct);
+            return RedirectToAction(nameof(Members));
+
         }
     }
 }

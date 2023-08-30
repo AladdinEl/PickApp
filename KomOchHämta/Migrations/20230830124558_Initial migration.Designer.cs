@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KomOchHämta.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230829134210_Added reserved")]
-    partial class Addedreserved
+    [Migration("20230830124558_Initial migration")]
+    partial class Initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,7 +106,12 @@ namespace KomOchHämta.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
@@ -116,44 +121,14 @@ namespace KomOchHämta.Migrations
                     b.Property<bool>("Reserved")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.HasIndex("UserId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 29, 15, 42, 10, 880, DateTimeKind.Local).AddTicks(1572),
-                            Description = "Dyr",
-                            Image = "Bild1",
-                            ProductName = "Lampa",
-                            Reserved = false,
-                            UserId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 29, 15, 42, 10, 880, DateTimeKind.Local).AddTicks(1633),
-                            Description = "Billig",
-                            Image = "Bild2",
-                            ProductName = "Soffa",
-                            Reserved = false,
-                            UserId = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 8, 29, 15, 42, 10, 880, DateTimeKind.Local).AddTicks(1637),
-                            Description = "Rea",
-                            Image = "Bild3",
-                            ProductName = "Stol",
-                            Reserved = false,
-                            UserId = 0
-                        });
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -289,6 +264,15 @@ namespace KomOchHämta.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("KomOchHämta.Models.Product", b =>
+                {
+                    b.HasOne("KomOchHämta.Models.ApplicationUser", "User")
+                        .WithMany("Products")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -338,6 +322,11 @@ namespace KomOchHämta.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KomOchHämta.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
