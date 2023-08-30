@@ -1,6 +1,6 @@
 ﻿@model CreateNewVM
 
-<form asp-controller="Products" asp-action="CreateNew" asp-route-id="@User.Identity." method="post" enctype="multipart/form-data">
+<form asp-controller="Products" asp-action="CreateNew" method="post" enctype="multipart/form-data">
 	<div>
 		<label asp-for="ProductName"></label>
 		<input asp-for="ProductName" />

@@ -11,24 +11,25 @@ namespace KomOchHämta.Models
         ApplicationContext context;
         private readonly UserManager<ApplicationUser> userManager;
         string userID;
+		IWebHostEnvironment webHostEnv;
 
 
-        //// "Fejk-databas"
-        //List<Product> products = new List<Product>
-        //{
-        //    new Product { Id = 56, ProductName = "Lampa", Image = "Bild1", Description ="Dyr", Created=DateTime.Now },
-        //    new Product { Id = 27, ProductName = "Soffa", Image = "Bild2", Description ="Billig", Created=DateTime.Now},
-        //    new Product { Id = 11, ProductName = "Stol", Image = "Bild3", Description ="Rea", Created=DateTime.Now},
-        //};
+		//// "Fejk-databas"
+		//List<Product> products = new List<Product>
+		//{
+		//    new Product { Id = 56, ProductName = "Lampa", Image = "Bild1", Description ="Dyr", Created=DateTime.Now },
+		//    new Product { Id = 27, ProductName = "Soffa", Image = "Bild2", Description ="Billig", Created=DateTime.Now},
+		//    new Product { Id = 11, ProductName = "Stol", Image = "Bild3", Description ="Rea", Created=DateTime.Now},
+		//};
 
-        public DataService(ApplicationContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor accessor)
+		public DataService(ApplicationContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor accessor, IWebHostEnvironment webHostEnv)
         {
             this.context = context;
             this.userManager = userManager;
             this.userID = userManager.GetUserId(accessor.HttpContext.User);
+			this.webHostEnv = webHostEnv;
 
-
-        }
+		}
 
 
 
@@ -120,19 +121,28 @@ namespace KomOchHämta.Models
 
         public void AddProduct(CreateNewVM newProduct)
         {
-            //var userID = userManager.GetUserId(userID);
+			if (newProduct.Image != null)
+				UploadImage(newProduct.Image);
 
-            context.Products.Add(new Product
+			context.Products.Add(new Product
             {
                 ProductName = newProduct.ProductName,
                 Description = newProduct.Description,
-                //Image = newProduct.Image,                            
-                Message = newProduct.Message,
+				Image = $"/Images/{newProduct.Image?.FileName}",                         
+				Message = newProduct.Message,
                 Location = newProduct.Location,
+                Created = DateTime.Now,
                 UserId = userID
             });
             context.SaveChanges();
         }
 
-    }
+		public void UploadImage(IFormFile image)
+		{
+			var filePath = Path.Combine(webHostEnv.WebRootPath, "Images", image.FileName);
+			using var fileStream = new FileStream(filePath, FileMode.Create);
+			{ image.CopyTo(fileStream); }
+		}
+
+	}
 }

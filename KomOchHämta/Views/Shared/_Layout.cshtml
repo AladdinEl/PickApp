@@ -1,27 +1,28 @@
 ﻿<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Kom och Hämta</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<meta charset="utf-8">
+	<title>Kom och Hämta</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
 <body>
-    <nav>
-        <a asp-controller="Products" asp-action="Members">Members</a>
-        <a asp-controller="Account" asp-action="Register">Register</a>
-        @if (User.Identity.IsAuthenticated)
-        {
-            <a asp-controller="Account" asp-action="LogOut">Log out</a>
-        }
-        else
-        {
-            <a asp-controller="Account" asp-action="LogIn">Login</a>
-        }
-        
-    </nav>
-    <br />
-    <div>
-        @RenderBody()
-    </div>
+	<nav>
+		@if (User.Identity.IsAuthenticated)
+		{
+			<a asp-controller="Products" asp-action="Members">Hem</a>
+			<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
+		}
+		else
+		{
+			<a asp-controller="Products" asp-action="Index">Hem</a>
+			<a asp-controller="Account" asp-action="Register">Register</a>
+			<a asp-controller="Account" asp-action="LogIn">Logga in</a>
+		}
+
+	</nav>
+	<br />
+	<div>
+		@RenderBody()
+	</div>
 </body>
 </html>

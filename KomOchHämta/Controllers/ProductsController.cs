@@ -1,23 +1,23 @@
 ﻿using KomOchHämta.Models;
 using KomOchHämta.Views.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KomOchHämta.Controllers
 {
+    [Authorize]
 	public class ProductsController : Controller
 	{
 
         DataService dataService;
 
-       
-
         public ProductsController(DataService dataService) // Injicera en DataService
         {
             this.dataService = dataService;
-            
         }
 
+        [AllowAnonymous]
         [HttpGet("")]
 		public IActionResult Index()
 		{
@@ -29,6 +29,7 @@ namespace KomOchHämta.Controllers
             return View(products);
 		}
 
+        [AllowAnonymous]
         [HttpPost("")]
         public IActionResult Index(string search)
         {
@@ -50,6 +51,7 @@ namespace KomOchHämta.Controllers
             return View(products);
         }
 
+        [AllowAnonymous]
         [HttpGet("/Details/{id}")]
         public IActionResult Details(int id)
         {

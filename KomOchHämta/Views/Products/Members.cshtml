@@ -1,18 +1,21 @@
 ﻿@model MembersVM[]
+@using Microsoft.AspNetCore.Identity;
+
 
 <h3>Members</h3>
 Welcome member - you are logged in as: @User.Identity.Name
 
-<form asp-controller="Products" asp-action="SearchProductsMember">
-    <label for="search">Sök produkt</label>
-    <input type="search" name="search" id="search" placeholder="Sök..." />
-    <button type="submit">Sök</button>
-</form>
-<ul>
-    @foreach (var item in Model)
-    {
-        <div>
-            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName (@item.Image)</a>
-        </div>
-    }
-</ul>
+<div>
+	<div>Mina annonser</div>
+	@foreach (var item in Model)
+	{
+		if (item.UserId == User.Identity.ToString())
+		{
+			@item.ProductName;
+		}
+
+	}
+</div>
+
+<partial name="_SearchView"></partial>
+

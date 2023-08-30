@@ -1,0 +1,26 @@
+﻿
+
+<form asp-controller="Products" asp-action="SearchProductsMember">
+    <label for="search">Sök produkt</label>
+    <input type="search" name="search" id="search" placeholder="Sök..." />
+    <button type="submit">Sök</button>
+</form>
+<a asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
+<ul>
+    @foreach (var item in Model)
+    {
+        <div>
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">
+                @item.ProductName
+                @if (item.Image != null)
+                {
+                    <img src="@item.Image" alt="Image" width="100">
+                }
+                else
+                {
+                    <img src="/Images/stuff.jpg" alt="Image" width="100">
+                }
+            </a>
+        </div>
+    }
+</ul>

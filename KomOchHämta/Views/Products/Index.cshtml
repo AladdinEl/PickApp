@@ -1,16 +1,5 @@
 ﻿@model IndexVM[]
 
     <h1>Kom och hämta</h1>
-<form asp-controller="Products" asp-action="SearchProducts">
-    <label for="search">Sök produkt</label>
-<input type="search" name="search" id="search" placeholder="Sök..."/>
-<button type="submit">Sök</button>
-</form>
-<ul>
-    @foreach (var item in Model)
-    {
-        <div>
-            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName (@item.Image)</a>
-        </div>
-    }
-</ul>
+
+<partial name="_SearchView"></partial>
