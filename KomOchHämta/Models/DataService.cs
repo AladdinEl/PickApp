@@ -146,5 +146,44 @@ namespace KomOchHämta.Models
 			{ image.CopyTo(fileStream); }
 		}
 
+        public EditVM? GetEditProduct(int id)
+        {
+			return context.Products
+				.Where(o => o.Id == id)
+				.Select(o => new EditVM
+                {
+					Id = o.Id,
+					ProductName = o.ProductName,
+					Description = o.Description,
+					//Image = o.Image,
+					Message = o.Message,
+					Location = o.Location,
+					Created = o.Created,
+					Reserved = o.Reserved,
+					UserId = o.UserId,
+					ReservedBy = o.ReservedBy
+				})
+				.SingleOrDefault();
+		}
+
+        public void EditProduct(EditVM editProduct)
+        {
+			var model = context.Products.Find(editProduct.Id);
+            if (editProduct.Image != null)
+                UploadImage(editProduct.Image);
+
+			if (model != null)
+            {
+				model.ProductName = editProduct.ProductName;
+				model.Description = editProduct.Description;
+				model.Message = editProduct.Message;
+				model.Location = editProduct.Location;
+				model.Created = DateTime.Now;
+				model.UserId = userID;
+                model.Image = $"/Images/{editProduct.Image?.FileName}";
+				context.SaveChanges();
+			}
+		}
+
 	}
 }

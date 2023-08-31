@@ -83,5 +83,23 @@ namespace KomOchHämta.Controllers
             return RedirectToAction(nameof(Members));
 
         }
+
+        [HttpGet("/Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+			var model = dataService.GetEditProduct(id);
+			return View(model);
+		}
+
+        [HttpPost("/Edit/{id}")]
+        public IActionResult Edit(EditVM editProduct)
+        {
+			if (!ModelState.IsValid)
+            {
+				return View(nameof(Edit));
+			}
+			dataService.EditProduct(editProduct);
+			return RedirectToAction(nameof(Members));
+		}
     }
 }
