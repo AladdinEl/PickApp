@@ -8,24 +8,27 @@
 </div>
 <form asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
 	<img src="@Model.Image" alt="Image" width="200"/>
-	@if (!Model.Reserved)
+	@if (!Model.Reserved && Model.UserId != userManager.GetUserId(User))
 	{
 		<input  type="submit" value="Reservera"/>
 	}
-	else if (Model.ReservedBy == userManager.GetUserId(User))
+	else if (Model.ReservedBy == userManager.GetUserId(User) && Model.Reserved)
 	{
 		<input type="submit" value="Avboka" />
 	}
-	else if (Model.UserId == userManager.GetUserId(User))
+	else if (Model.UserId == userManager.GetUserId(User) && Model.Reserved)
 	{
 		<div>Detta är din annons</div>
-		<input type="submit" value="Ta bort bokning" />
+		<input type="submit" value="Ta bort reservation" />
 	}
-	else if (Model.ReservedBy != userManager.GetUserId(User))
+	else if (Model.ReservedBy != userManager.GetUserId(User) && Model.Reserved)
 	{
 		<div>Reserverad</div>
 	}
-	
+	else if (Model.UserId == userManager.GetUserId(User) && !Model.Reserved)
+	{
+		<div>Detta är din annons</div>
+	}
 		
 </form>
 @if (Model.UserId == userManager.GetUserId(User))
