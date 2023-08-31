@@ -55,7 +55,8 @@ namespace KomOchHämta.Models
                 {
                     Id = o.Id,
                     ProductName = o.ProductName,
-                    Image = o.Image
+                    Image = o.Image,
+                    UserId = o.UserId
                 })
             .ToArray();
         }

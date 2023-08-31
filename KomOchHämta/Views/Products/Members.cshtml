@@ -1,7 +1,7 @@
 ﻿@model MembersVM[]
+@using KomOchHämta.Models;
 @using Microsoft.AspNetCore.Identity;
-
-
+@inject UserManager<ApplicationUser> userManager
 <h3>Members</h3>
 Welcome member - you are logged in as: @User.Identity.Name
 
@@ -9,12 +9,17 @@ Welcome member - you are logged in as: @User.Identity.Name
 	<div>Mina annonser</div>
 	@foreach (var item in Model)
 	{
-		if (item.UserId == User.Identity.ToString())
+		if (item.UserId == userManager.GetUserId(User))
 		{
-			@item.ProductName;
+			<div>
+			@item.ProductName		
+			</div>
 		}
-
 	}
+</div>
+<div>
+	<div>Mina ordrar</div>
+	
 </div>
 
 <partial name="_SearchView"></partial>

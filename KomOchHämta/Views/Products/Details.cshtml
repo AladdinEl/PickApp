@@ -8,6 +8,7 @@
 	@Model.Reserved
 </div>
 <form asp-controller ="Products" asp-action="Details" asp-route-id="@Model.Id">
+	<img src="@Model.Image" alt="Image" width="200"/>
 	<input type="submit" value="@(Model.Reserved ? "Avboka": "Reservera")" />
 </form>
 
