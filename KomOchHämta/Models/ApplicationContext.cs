@@ -35,9 +35,9 @@ namespace KomOchHämta.Models
 
 			modelBuilder.Entity<Product>().HasData(
 
-			  new Product { Id = 1, ProductName = "Lampa", Image = "Bild1", Description = "Dyr", Created = DateTime.Now },
-			  new Product { Id = 2, ProductName = "Soffa", Image = "Bild2", Description = "Billig", Created = DateTime.Now },
-			  new Product { Id = 3, ProductName = "Stol", Image = "Bild3", Description = "Rea", Created = DateTime.Now }
+			  new Product { Id = 1, ProductName = "Lampa", Image = null, Description = "Dyr", Created = DateTime.Now },
+			  new Product { Id = 2, ProductName = "Soffa", Image = null, Description = "Billig", Created = DateTime.Now },
+			  new Product { Id = 3, ProductName = "Stol", Image = null, Description = "Rea", Created = DateTime.Now }
 			  );
 		}
 

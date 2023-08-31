@@ -5,13 +5,12 @@
     <input type="search" name="search" id="search" placeholder="Sök..." />
     <button type="submit">Sök</button>
 </form>
-<a asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
-<ul>
+<ul class="products">
     @foreach (var item in Model)
     {
-        <div>
+        <div class="product">
             <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">
-                @item.ProductName
+               <div>
                 @if (item.Image != null)
                 {
                     <img src="@item.Image" alt="Image" width="100">
@@ -20,6 +19,8 @@
                 {
                     <img src="/Images/stuff.jpg" alt="Image" width="100">
                 }
+                </div>
+                <div>@item.ProductName</div>
             </a>
         </div>
     }

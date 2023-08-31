@@ -5,6 +5,8 @@ namespace KomOchHämta.Views.Account
 	public class RegisterVM
 	{
 		[Required]
+		[Display(Name = "Användarnamn")]
+		[StringLength(20, MinimumLength = 2, ErrorMessage = "Användarnamnet måste vara mellan 2 och 20 bokstäver")]
 		public string Username { get; set; }
 
 		[Required]
