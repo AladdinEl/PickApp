@@ -10,14 +10,22 @@ Welcome member - you are logged in as: @User.Identity.Name
 		if (item.UserId == userManager.GetUserId(User))
 		{
 			<div>
-			@item.ProductName		
+				<a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName <img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></a>
 			</div>
 		}
 	}
 </div>
 <div>
-	<div>Mina ordrar</div>
-	
+	<div>Mina reservationer</div>
+	@foreach (var item in Model)
+	{
+		if (item.ReservedBy == userManager.GetUserId(User))
+		{
+			<div>
+				<a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName <img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></a>
+			</div>
+		}
+	}
 </div>
 
 <partial name="_SearchView"></partial>

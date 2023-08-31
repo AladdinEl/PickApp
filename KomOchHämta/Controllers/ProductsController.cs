@@ -3,6 +3,7 @@ using KomOchHämta.Views.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace KomOchHämta.Controllers
 {
@@ -88,8 +89,15 @@ namespace KomOchHämta.Controllers
         public IActionResult Edit(int id)
         {
 			var model = dataService.GetEditProduct(id);
+			var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+			if (model.UserId != userId) // Jämför användar-ID för produkten med inloggad användare
+			{
+				return Forbid(); // Användaren har inte tillstånd att redigera denna produkt
+			}
 			return View(model);
 		}
+
 
         [HttpPost("/Edit/{id}")]
         public IActionResult Edit(EditVM editProduct)

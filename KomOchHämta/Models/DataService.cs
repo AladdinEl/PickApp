@@ -168,6 +168,9 @@ namespace KomOchHämta.Models
 
         public void EditProduct(EditVM editProduct)
         {
+            //if (editProduct.UserId != userID)
+            //    return;
+
 			var model = context.Products.Find(editProduct.Id);
             if (editProduct.Image != null)
                 UploadImage(editProduct.Image);
