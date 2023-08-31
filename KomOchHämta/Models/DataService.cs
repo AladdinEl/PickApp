@@ -116,7 +116,10 @@ namespace KomOchHämta.Models
             if (model != null /*&& !model.Reserved*/)
             {       
                 model.Reserved = !model.Reserved;
+                if (model.Reserved)
                 model.ReservedBy = reservedBy;
+                else
+                model.ReservedBy = null;
                 //model.UserId = userId;
                 context.SaveChanges();
             }
@@ -188,6 +191,13 @@ namespace KomOchHämta.Models
 				context.SaveChanges();
 			}
 		}
+
+        public void Delete(int id)
+        {
+            var product= context.Products.Find(id);
+            context.Products.Remove(product);
+            context.SaveChanges();
+        }
 
 	}
 }

@@ -109,5 +109,12 @@ namespace KomOchHämta.Controllers
 			dataService.EditProduct(editProduct);
 			return RedirectToAction(nameof(Members));
 		}
+
+        [HttpGet("/Delete/{id}")]
+        public IActionResult Delete(int id) 
+        {
+            dataService.Delete(id);
+            return RedirectToAction(nameof(Members));
+        }
     }
 }
