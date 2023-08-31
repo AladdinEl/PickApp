@@ -60,9 +60,9 @@ namespace KomOchHämta.Controllers
         }
 
         [HttpPost("/Details/{id}")]
-        public IActionResult Details(DetailsVM details)
+        public IActionResult Details(DetailsVM details, string reservedBy)
         {
-            dataService.Reserve(details);
+            dataService.Reserve(details, reservedBy);
             return RedirectToAction(nameof(Details));
         }
 

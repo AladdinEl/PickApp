@@ -2,13 +2,30 @@
 
 <div>
 	@Model.ProductName,
-	@Model.Image,
 	@Model.Description
 	@Model.Created
 	@Model.Reserved
 </div>
-<form asp-controller ="Products" asp-action="Details" asp-route-id="@Model.Id">
+<form asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
 	<img src="@Model.Image" alt="Image" width="200"/>
-	<input type="submit" value="@(Model.Reserved ? "Avboka": "Reservera")" />
+	@if (!Model.Reserved)
+	{
+		<input  type="submit" value="Reservera"/>
+	}
+	else if (Model.ReservedBy == userManager.GetUserId(User))
+	{
+		<input type="submit" value="Avboka" />
+	}
+	else if (Model.UserId == userManager.GetUserId(User))
+	{
+		<div>Detta är din annons</div>
+		<input type="submit" value="Ta bort bokning" />
+	}
+	else if (Model.ReservedBy != userManager.GetUserId(User))
+	{
+		<div>Reserverad</div>
+	}
+	
+		
 </form>
 

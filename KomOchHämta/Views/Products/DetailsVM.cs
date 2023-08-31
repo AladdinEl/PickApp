@@ -6,9 +6,11 @@
 		public string ProductName { get; set; }
 		public string Image { get; set; }
 		public string Description { get; set; }
+		public string UserId { get; set; }
 
 		public DateTime Created { get; set; }
         public bool Reserved { get; set; }
+		public string? ReservedBy { get; set; }
 
-    }
+	}
 }

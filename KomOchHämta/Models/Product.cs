@@ -12,6 +12,7 @@
         public string? UserId { get; set; }
         public string? Location { get; set; }
         public string? Message { get; set; }
+        public string? ReservedBy { get; set; }
 
         public ApplicationUser? User { get; set; }
 

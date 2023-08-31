@@ -32,8 +32,6 @@ namespace KomOchHämta.Models
 		}
 
 
-
-
         public IndexVM[] GetAllProducts()
         {
             return context.Products
@@ -105,16 +103,19 @@ namespace KomOchHämta.Models
                     Description = o.Description,
                     Image = o.Image,
                     Reserved = o.Reserved,
+                    UserId = o.UserId,
+                    ReservedBy = o.ReservedBy,
                 })
                 .SingleOrDefault();
                     
         }
-        internal void Reserve(DetailsVM details/*, int userId*/)
+        internal void Reserve(DetailsVM details, string reservedBy)
         {              
             var model = context.Products.Find(details.Id);
             if (model != null /*&& !model.Reserved*/)
-            {
+            {       
                 model.Reserved = !model.Reserved;
+                model.ReservedBy = reservedBy;
                 //model.UserId = userId;
                 context.SaveChanges();
             }
