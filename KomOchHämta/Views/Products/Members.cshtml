@@ -1,8 +1,8 @@
 ﻿@model MembersVM[]
 
 <a asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
-
-<div>
+<div class="saker">
+<div class="annonser">
 	<div>Mina annonser</div>
 	@foreach (var item in Model)
 	{
@@ -15,7 +15,7 @@
 		}
 	}
 </div>
-<div>
+<div class="ordrar">
 	<div>Mina reservationer</div>
 	@foreach (var item in Model)
 	{
@@ -27,6 +27,8 @@
 		}
 	}
 </div>
+<div>
 
+</div>
 <partial name="_SearchView"></partial>
 

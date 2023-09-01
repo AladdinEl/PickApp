@@ -1,9 +1,9 @@
 ﻿@model CreateNewVM
-
+<div class="container">
 <form asp-controller="Products" asp-action="CreateNew" method="post" enctype="multipart/form-data">
 	<div>
 		<label asp-for="ProductName"></label>
-		<input asp-for="ProductName" />
+		<input asp-for="ProductName" placeholder="Skriv in produktnamn"/>
 	</div>
 	<div>
 		<label asp-for="Image"></label>
@@ -11,17 +11,18 @@
 	</div>
 	<div>
 		<label asp-for="Description"></label>
-		<input asp-for="Description" />
+		<textarea asp-for="Description" rows="4" cols="50" placeholder="Beskriv varan"></textarea>	
 	</div>
 	<div>
 		<label asp-for="Location"></label>
-		<input asp-for="Location" />
+		<input asp-for="Location" placeholder="Ange upphämtningsplats"/>
 	</div>
 	<div>
 		<label asp-for="Message"></label>
-		<input asp-for="Message" />
+			<textarea asp-for="Message" rows="4" cols="50" placeholder="Meddelande till upphämtaren (Skickas på mail efter bokning.)"></textarea>
 	</div>
 	<div>
 		<input type="submit" value="Skapa" />
 	</div>
 </form>
+</div>
