@@ -1,23 +1,31 @@
 ﻿@model RegisterVM
-<h3>Register</h3>
-<form class="content" asp-controller="Account" asp-action="Register">
-    <label asp-for="Username"></label>
-    <input asp-for="Username" />
-    <span asp-validation-for="Username"></span>
+<div class="container">
+    <div class="left-column">
+        <img src="\Images\Nylogo.png" alt="logotyp" width="400" height="400" />
+    </div>
+    <div class="right-column">
+        <h3 style="padding: 2%" class="login-form">Skapa ny användare</h3>
+        <hr />
+        <form class="login-form" asp-controller="Account" asp-action="Register">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" />
+            <span asp-validation-for="Username"></span>
 
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
-    
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
 
-    <label asp-for="PasswordRepeat"></label>
-    <input asp-for="PasswordRepeat" />
-    <span asp-validation-for="PasswordRepeat"></span>
-    <br />
-    <input type="submit" value="Register" />
-</form>
-<div asp-validation-summary="All"></div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+
+            <label asp-for="PasswordRepeat"></label>
+            <input asp-for="PasswordRepeat" />
+            <span asp-validation-for="PasswordRepeat"></span>
+            <br />
+            <input class="login-form" type="submit" value="Skapa konto" />
+        </form>
+        <div asp-validation-summary="All"></div>
+    </div>
+</div>
