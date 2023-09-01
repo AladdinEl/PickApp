@@ -1,23 +1,22 @@
 ﻿
-
+<div class="searchResult">
 <form asp-controller="Products" asp-action="SearchProductsMember">
-    <label for="search">Sök produkt</label>
-    <input type="search" name="search" id="search" placeholder="Sök..." />
+    <input type="search" name="search" id="search" placeholder="Sök produkt..." />
     <button type="submit">Sök</button>
 </form>
 <ul class="products">
     @foreach (var item in Model)
     {
-        <div>
+        <div class="product">
             <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">
                <div>
                 @if (item.Image != null)
                 {
-                    <img src="@item.Image" alt="Image" width="100">
+                    <img src="@item.Image" alt="Image" width="100%">
                 }
                 else
                 {
-                    <img src="/Images/stuff.jpg" alt="Image" width="100">
+                    <img src="/Images/stuff.jpg" alt="Image" width="100%">
                 }
                 </div>
                 <div>@item.ProductName</div>
@@ -25,3 +24,4 @@
         </div>
     }
 </ul>
+</div>
