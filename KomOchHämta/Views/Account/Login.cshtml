@@ -1,15 +1,25 @@
 ﻿@model LoginVM
 
-<h3>Log In</h3>
-<form class="content" asp-controller="Account" asp-action="Login">
-    <label asp-for="Username"></label>
-    <input asp-for="Username" />
-    <span asp-validation-for="Username"></span>
+<div class="container">
+    <div 
+        class="left-column">
+        <img src="\Images\PICKAPP.png" alt="logotyp" width="400" height="400"/>
+    </div>
+    <div class="right-column">
+        <h3 style="padding 100" class="login-form">Logga In</h3>
+<hr />
+<div></div>
+        <form class="login-form" asp-controller="Account" asp-action="Login">
+            <label class="login-form" asp-for="Username"></label>
+            <input class="login-form" asp-for="Username" />
+            <span asp-validation-for="Username"></span>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
-    <br />
-    <input type="submit" value="Log In" />
-</form>
-<div asp-validation-summary="All"></div>
+            <label class="login-form" asp-for="Password"></label>
+            <input class="login-form" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+            <br />
+            <input class="login-button" type="submit" value="Log In" />
+        </form>
+        <div asp-validation-summary="All"></div>
+    </div>
+</div>

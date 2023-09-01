@@ -10,6 +10,7 @@
 		{
 			<div>
 				<a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName <img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></a>
+				<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
 			</div>
 		}
 	}
