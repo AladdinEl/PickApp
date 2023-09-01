@@ -7,31 +7,30 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<style>
 		nav {
-			background-color: white;
-			height: 50px;
-			/* padding: 10px; */
+			background-color: #A5D265;
+			height: 30%;
+			padding: 1%;
+			padding-left: 25px;
+			padding-right: 25px;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-			list-style: none;
+			/* list-style: none; */
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
+			align-items: last baseline;
 		}
 
 			nav a {
 				text-decoration: none;
 				color: #333333;
 				font-size: 16px;
+				padding-left 10%;
+			/* font-weight: bold; */
+
 			}
 
 				nav a:hover {
 					color: #000000;
 				}
-
-		/* .content {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		} */
 
 		.center {
 			text-align: center;
@@ -62,34 +61,31 @@
 
 		.left-column {
 			flex: 2;
-			/* padding: 1rem; */
-		
 		}
 
 		.right-column {
-			flex: 3; 
+			flex: 3;
 			background-color: #fffaf0;
-			/* padding: 1rem; */
-		
-		
+			height: 80%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 		}
 
-		.image-column {
-			flex: 1;
-			background-image: url("/Images/PICKAPP.png");
-			background-size: cover;
-			background-position: center;
+		.login-links {
+			display: flex;
+			align-items: center; /* Centrera elementen vertikalt */
 		}
 
-		.form-column {
-			flex: 1;
-			background-color: #fffaf0;
+		.separator {
+			margin: 0 10px; /* Lägg till 10px mellanrum mellan länkarna */
 		}
 
 		.login-form {
-			max-width: 300px;
+			max-width: 80%;
 			margin: 0 auto;
-			text-align : center;
+			text-align: center;
 		}
 
 			.login-form label,
@@ -100,7 +96,7 @@
 			}
 
 				.login-form input[type="submit"] {
-					background-color: #007bff;
+					background-color: #01571D;
 					color: #fff;
 					border: none;
 					padding: 10px 20px;
@@ -110,7 +106,6 @@
 
 		.login-button {
 			display: block;
-			background-color: #007bff;
 			color: #fff;
 			border: none;
 			border-radius: 0.3rem;
@@ -122,30 +117,40 @@
 		}
 
 			.login-button:hover {
-				background-color: #0056b3;
-				color: red;
-				box-shadow: 0 0 10px red;
+				box-shadow: 0 0 10px green;
 				font-size: 15px;
 			}
 	</style>
 </head>
 <body>
 	<nav class="nav">
+		<img src="/Images/logotyp (1).png" width="10%" height="10%" alt="logotyp" style="padding-right: 2%; padding-left: 2% "/>
 		@if (User.Identity.IsAuthenticated)
 		{
+			<div class="left-column">
 			<a asp-controller="Products" asp-action="Members">Hem</a>
+			</div>
+
 			<div>Välkommen @User.Identity.Name!</div>
+			<span class="separator"></span>
+			<div class="login-links">
 			<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
+			</div>
 		}
 		else
 		{
-			<a asp-controller="Products" asp-action="Index">Hem</a>
-			<a asp-controller="Account" asp-action="Register">Register</a>
-			<a asp-controller="Account" asp-action="LogIn">Logga in</a>
+			<div class="left-column">
+				<a asp-controller="Products" asp-action="Index">Hem</a>
+			</div>
+			<div class="login-links">
+				<a asp-controller="Account" asp-action="Register">Skapa ny användare</a>
+				<span class="separator"></span>
+				<a asp-controller="Account" asp-action="LogIn">Logga in</a>
+			</div>
+
 		}
 	</nav>
 
-	@* <br /> *@
-		@RenderBody()
+	@RenderBody()
 </body>
 </html>

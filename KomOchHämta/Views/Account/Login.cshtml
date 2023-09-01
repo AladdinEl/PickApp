@@ -6,9 +6,8 @@
         <img src="\Images\PICKAPP.png" alt="logotyp" width="400" height="400"/>
     </div>
     <div class="right-column">
-        <h3 style="padding 100" class="login-form">Logga In</h3>
+        <h3 style="padding 100" class="login-form">Logga in</h3>
 <hr />
-<div></div>
         <form class="login-form" asp-controller="Account" asp-action="Login">
             <label class="login-form" asp-for="Username"></label>
             <input class="login-form" asp-for="Username" />
@@ -18,7 +17,7 @@
             <input class="login-form" asp-for="Password" />
             <span asp-validation-for="Password"></span>
             <br />
-            <input class="login-button" type="submit" value="Log In" />
+            <input class="login-button" type="submit" value="Logga in" />
         </form>
         <div asp-validation-summary="All"></div>
     </div>
