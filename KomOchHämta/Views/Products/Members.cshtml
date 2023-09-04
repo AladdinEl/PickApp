@@ -1,43 +1,40 @@
 ﻿@model MembersVM[]
 
 <a asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
+<div style="display:flex; flex-direction:row; justify-content: space-between">
+	<div style="padding: 3%">
+		<h1>Händelser och nyheter</h1>
+		<p>Här kommer nyheter och annan information dyka upp och uppdateras regelbundet.</p>
+	</div>
 
-<div style="padding: 3%">
-	<h1>Händelser och nyheter</h1>
-	<p>Här kommer nyheter och annan information dyka upp och uppdateras regelbundet.</p>
+	<div class="saker" style="display:flex; flex-direction:row">
+		<div class="annonser">
+		<div>Mina annonser</div>
+			@foreach (var item in Model)
+			{
+				if (item.UserId == userManager.GetUserId(User))
+				{
+						<div class="product-container">
+							<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
+							<div class="productImg"><img src="@item.Image" alt="ProductImage" witdh="50" height="50"></div>
+						<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
+						</div>
+				}
+			}
+		</div>
+		<div class="ordrar">Mina reservationer</div>
+			@foreach (var item in Model)
+			{
+				if (item.ReservedBy == userManager.GetUserId(User))
+				{
+						<div class="product-container" class="productName">
+							<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
+							<div class ="productImg"><img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></div>
+						</div>
+				}
+			}
+	</div>
 </div>
 
-<div class="saker">
-<div class="annonser">
-	<div>Mina annonser</div>
-	@foreach (var item in Model)
-	{
-		if (item.UserId == userManager.GetUserId(User))
-		{
-				<div class="product-container">
-					<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
-					<div class="productImg"><img src="@item.Image" alt="ProductImage" witdh="50" height="50"></div>
-				<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
-			</div>
-		}
-	}
-</div>
-<div class="ordrar">
-	<div>Mina reservationer</div>
-	@foreach (var item in Model)
-	{
-		if (item.ReservedBy == userManager.GetUserId(User))
-		{
-				<div class="product-container" class="productName">
-					<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
-					<div class ="productImg"><img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></div>
-				</div>
-		}
-	}
-</div>
-
-<div>
-
-</div>
 <partial name="_SearchView"></partial>
 
