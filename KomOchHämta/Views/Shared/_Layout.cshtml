@@ -219,11 +219,13 @@
 <body class="body">
 	<nav class="nav">
 		<img src="/Images/logotyp (1).png" width="10%" height="10%" alt="logotyp" style="padding-right: 2%; padding-left: 2% "/>
+			<div class="left-column">
+		<a asp-controller="Products" asp-action="@(User.Identity.IsAuthenticated ? "Members" : "Index")">Hem</a>
+			</div>
+		<img src="~/Images/MicrosoftTeams-image (12).png" width="15%" height="15%" alt="logotitle" style="padding-right:2%; padding-left: 2%" />
 		@if (User.Identity.IsAuthenticated)
 		{
-			<div class="left-column">
-			<a asp-controller="Products" asp-action="Members">Hem</a>
-			</div>
+			@* <a asp-controller="Products" asp-action="Members">Hem</a> *@
 
 			<div>Välkommen @User.Identity.Name!</div>
 			<span class="separator"></span>
@@ -234,7 +236,7 @@
 		else
 		{
 			<div class="left-column">
-				<a asp-controller="Products" asp-action="Index">Hem</a>
+				@* <a asp-controller="Products" asp-action="Index">Hem</a> *@
 			</div>
 			<div class="login-links">
 				<a asp-controller="Account" asp-action="Register">Skapa ny användare</a>
