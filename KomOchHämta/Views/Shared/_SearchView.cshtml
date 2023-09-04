@@ -3,9 +3,9 @@
     <div style="height: 70%">
         
     </div>
-    <form asp-controller="Products" asp-action="SearchProductsMember" style="padding-left: 3%; padding-top: 2%;">
-    <input type="search" name="search" id="search" placeholder="Sök produkt..." />
-    <button type="submit">Sök</button>
+    <form asp-controller="Products" asp-action="SearchProductsMember" id="search-form" style="padding-left: 3%; padding-top: 2%;">
+    <input type="search" name="search" id="search" placeholder="Sök produkt..."/>
+    @* <button type="submit">Sök</button> *@
 </form>
 <ul class="products">
     @foreach (var item in Model)
@@ -28,3 +28,28 @@
     }
 </ul>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#search').on('input', function () {
+            var searchQuery = $(this).val();
+
+            $.ajax({
+                type: "POST",
+                url: $('#search-form').attr('action'),
+                data: { search: searchQuery },
+                success: function (result) {
+                    $('.products').html(result);
+                },
+                error: function () {
+                    alert('Ett fel inträffade vid sökningen.');
+                }
+            });
+        });
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault();
+        });
+    });
+</script>
+
+

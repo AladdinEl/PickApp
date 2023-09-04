@@ -53,6 +53,15 @@ namespace KomOchHämta.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("SearchProductsMember")]
+        public IActionResult SearchProductsMember(string search)
+        {
+            var products = dataService.SearchProductsMember(search);
+            return PartialView("_ProductList", products);
+        }
+
+
+        [AllowAnonymous]
         [HttpGet("/Details/{id}")]
         public IActionResult Details(int id)
         {

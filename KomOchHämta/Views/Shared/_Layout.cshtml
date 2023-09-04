@@ -132,26 +132,26 @@
 			background-color: white;
 		}
 
-		.annonser{
+		.annonser { 
 			display: flex;
 			flex-direction: column;
-			flex-wrap: wrap;
-			align-content: flex-end;
 			justify-content: flex-start;
-			margin-right 2%;
+			align-items: center;
+			margin-right: 2%;
 			padding: 1%;
 			background-color: #fffaf0;
+			width: 10%;
 		}
 
 		.ordrar{
 			display: flex;
 			flex-direction: column;
-			flex-wrap: wrap;
-			align-content: flex-end;
 			justify-content: flex-start;
+			align-items: center;
 			margin-right: 2%;
 			padding: 1%;
 			background-color: #fffaf0;
+			width: 10%;
 		}
 
 		.saker{
@@ -173,6 +173,25 @@
 			margin-top: 20%;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 		}
+
+		#search {
+			width: 25%;
+			height: 10%;
+			padding: 10px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			background-color: #f5f5f5;
+			font-size: 16px;
+			color: #333;
+			transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+		}
+
+			#search:hover {
+				background-color: white;
+				border-color: green;
+			}
+
+			
 
 	</style>
 </head>
