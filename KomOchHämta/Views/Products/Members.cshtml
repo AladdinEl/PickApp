@@ -15,9 +15,9 @@
 				if (item.UserId == userManager.GetUserId(User))
 				{
 						<div class="product-container">
+							<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
 							<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
 							<div class="productImg"><img src="@item.Image" alt="ProductImage" witdh="50" height="50"></div>
-						<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
 						</div>
 				}
 			}
@@ -28,7 +28,7 @@
 			{
 				if (item.ReservedBy == userManager.GetUserId(User))
 				{
-						<div class="product-container" class="productName">
+						<div class="product-container">
 							<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
 							<div class ="productImg"><img src="@item.Image" alt="@item.ProductName" witdh="50" height="50"></div>
 						</div>

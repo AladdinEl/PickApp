@@ -22,9 +22,8 @@
 			nav a {
 				text-decoration: none;
 				color: #333333;
-				font-size: 16px;
-				padding-left 10%;
-			/* font-weight: bold; */
+				font-size: 150%;
+				 font-weight:bold;
 
 			}
 
@@ -224,9 +223,10 @@
 		<img src="~/Images/MicrosoftTeams-image (12).png" width="15%" height="15%" alt="logotitle" style="padding-right:2%; padding-left: 2%" />
 		@if (User.Identity.IsAuthenticated)
 		{
-			@* <a asp-controller="Products" asp-action="Members">Hem</a> *@
 
-			<div>Välkommen @User.Identity.Name!</div>
+			<div class="left-column">
+			</div>
+			<div style="font-size: 110%">Välkommen @User.Identity.Name!</div>
 			<span class="separator"></span>
 			<div class="login-links">
 			<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
@@ -235,7 +235,6 @@
 		else
 		{
 			<div class="left-column">
-				@* <a asp-controller="Products" asp-action="Index">Hem</a> *@
 			</div>
 			<div class="login-links">
 				<a asp-controller="Account" asp-action="Register">Skapa ny användare</a>
