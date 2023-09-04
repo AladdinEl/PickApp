@@ -6,9 +6,9 @@ namespace KomOchHämta.Views.Products
     {
         public int Id { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Produktnamn måste anges.")]
 		[Display(Name = "Produktnamn")]
-		[StringLength(50, MinimumLength = 2)]
+		[StringLength(50, MinimumLength = 2, ErrorMessage = "Måste vara 2-50 tecken.")]
 		public string ProductName { get; set; }
         public IFormFile? Image { get; set; }
 
@@ -19,7 +19,7 @@ namespace KomOchHämta.Views.Products
         public bool Reserved { get; set; }
 
 		//public string? UserId { get; set; }
-		[Required]
+		[Required(ErrorMessage = "Upphämtningsplats måste anges.")]
 		[Display(Name = "Plats")]
 		public string? Location { get; set; }
 

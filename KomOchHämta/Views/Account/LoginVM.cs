@@ -10,11 +10,14 @@ namespace KomOchHämta.Views.Account
 	{
 		[Required]
 		[Display(Name = "Användarnamn")]
+		[StringLength(20, MinimumLength = 2, ErrorMessage = "Namnet måste vara mellan 2-20 tecken.")]
 		public string Username { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Lösenord saknas!")]
 		[DataType(DataType.Password)]
 		[Display(Name = "Lösenord")]
 		public string Password { get; set; }
 	}
 }
+
+

@@ -162,8 +162,26 @@
 			align-content: flex-end;
 			justify-content: flex-start;
 			margin-right: 2%;
-			
 		}
+
+		.product-container {
+			position: relative;
+			display: inline-block;
+		}
+
+		.productImg {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.productName:hover + .productImg {
+			opacity: 1;
+			visibility: visible;
+		}
+
 		.body{
 			background-color: #fffaf0;
 		}
@@ -191,8 +209,10 @@
 				background-color: white;
 				border-color: green;
 			}
-
-			
+		a {
+			text-decoration:none;
+		}
+		
 
 	</style>
 </head>
@@ -227,4 +247,5 @@
 
 	@RenderBody()
 </body>
+	@RenderSection("scripts", false)
 </html>

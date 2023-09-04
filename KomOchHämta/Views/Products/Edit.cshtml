@@ -1,29 +1,38 @@
 ﻿@model EditVM
 
-<form asp-controller="Products" asp-action="Edit" method="post" enctype="multipart/form-data">
-	<div>
-		<label asp-for="ProductName"></label>
-		<input asp-for="ProductName" />
-	</div>
-	<div>
-		<label asp-for="Image"></label>
-		<input asp-for="Image" type="file" />
-	</div>
-	<div>
-		<label asp-for="Description"></label>
-		<input asp-for="Description" />
-	</div>
-	<div>
-		<label asp-for="Location"></label>
-		<input asp-for="Location" />
-	</div>
-	<div>
-		<label asp-for="Message"></label>
-		<input asp-for="Message" />
-	</div>
-	<div>
-		<input type="submit" value="Skapa" />
-	</div>
-</form>
+<div style="display: flex; justify-content: center; padding-top: 5%;">
+	<form asp-controller="Products" asp-action="Edit" method="post" enctype="multipart/form-data" style="padding:4%; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);">
+        <div style="display: flex; flex-direction: column; float: left; padding-right: 40px;">
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName" placeholder="Skriv in produktnamn" style="margin-bottom: 20px;" />
+            <span asp-validation-for="ProductName"></span>
 
+            <label asp-for="Location"></label>
+            <input asp-for="Location" placeholder="Ange upphämtningsplats" style="margin-bottom: 20px;" />
+            <span asp-validation-for="Location"></span>
+
+
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" rows="4" cols="50" placeholder="Beskriv varan" style="margin-bottom: 20px;"></textarea>
+
+        </div>
+        <div style="display: flex; flex-direction: column; float: right; padding-left: 40px;">
+            <label asp-for="Message"></label>
+            <textarea asp-for="Message" rows="4" cols="50" placeholder="Meddelande till upphämtaren (Skickas på mail efter bokning.)" style="margin-bottom: 20px;"></textarea>
+
+            <label asp-for="Image"></label>
+            <input asp-for="Image" type="file" style="margin-bottom: 20px;" />
+
+            <input type="submit" value="Skapa" style="margin-top: 20px; background-color: #01571D; color: #fff; padding: 10px 20px;" />
+
+        </div>
+</form>
 <a asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
+</div>
+
+
+@section scripts {
+	<script src="~/jquery/jquery.min.js"></script>
+	<script src="~/jquery-validate/jquery.validate.min.js"></script>
+	<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

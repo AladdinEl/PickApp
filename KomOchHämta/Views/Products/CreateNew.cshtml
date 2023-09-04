@@ -4,12 +4,16 @@
         <div style="display: flex; flex-direction: column; float: left; padding-right: 40px;">
             <label asp-for="ProductName"></label>
             <input asp-for="ProductName" placeholder="Skriv in produktnamn" style="margin-bottom: 20px;" />
+            <span asp-validation-for="ProductName"></span>
 
             <label asp-for="Location"></label>
             <input asp-for="Location" placeholder="Ange upphämtningsplats" style="margin-bottom: 20px;" />
+            <span asp-validation-for="Location"></span>
+
 
             <label asp-for="Description"></label>
             <textarea asp-for="Description" rows="4" cols="50" placeholder="Beskriv varan" style="margin-bottom: 20px;"></textarea>
+
         </div>
         <div style="display: flex; flex-direction: column; float: right; padding-left: 40px;">
             <label asp-for="Message"></label>
@@ -24,3 +28,8 @@
     </form>
 </div>
 
+@section scripts {
+	<script src="~/jquery/jquery.min.js"></script>
+	<script src="~/jquery-validate/jquery.validate.min.js"></script>
+	<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
