@@ -8,27 +8,48 @@
 	<style>
 		nav {
 			background-color: #A5D265;
-			height: 30%;
+			/* height: 30%; */
 			padding: 1%;
-			padding-left: 25px;
-			padding-right: 25px;
+			padding-left: 1%;
+			padding-right: 1%;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-			/* list-style: none; */
 			display: flex;
 			justify-content: space-between;
-			align-items: last baseline;
+			align-items:flex-end;
 		}
 
-			nav a {
-				text-decoration: none;
-				color: #333333;
-				font-size: 150%;
-				font-weight: bold;
-			}
+		nav a {
+			color: #333333;
+			font-weight:bold;
+		}
 
-				nav a:hover {
-					color: #000000;
-				}
+		nav a:hover {
+			color: #000000;
+		}
+
+		.nav-left {
+			height: 100%; 
+			width: 33%;
+			padding-right: 2%; 
+			padding-left: 2%;
+			display:flex;
+			align-items: flex-end;
+		}
+
+		.nav-center {
+			height: 100%;
+			width: 33%;
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+		}
+
+		.nav-right {
+			height: 100%;
+			width: 33%;
+			display:flex;
+			justify-content:right;
+		}
 
 		.center {
 			text-align: center;
@@ -45,8 +66,8 @@
 			display: flex;
 			flex-wrap: wrap;
 			text-align: center;
-			margin: 1%;
-			border: solid black;
+			margin: 1%; 
+			border:solid black;
 			width: 15%;
 			background-color: white;
 		}
@@ -58,12 +79,9 @@
 			align-items: center;
 			justify-content: center;
 			height: 90vh;
-			text-align: center;
+			text-align:center;
 		}
 
-		.left-column {
-			flex: 2;
-		}
 
 		.right-column {
 			flex: 3;
@@ -73,15 +91,6 @@
 			flex-direction: column;
 			justify-content: center;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-		}
-
-		.login-links {
-			display: flex;
-			align-items: center; /* Centrera elementen vertikalt */
-		}
-
-		.separator {
-			margin: 0 10px; /* Lägg till 10px mellanrum mellan länkarna */
 		}
 
 		.login-form {
@@ -110,7 +119,7 @@
 			display: block;
 			color: #fff;
 			border: none;
-			border-radius: 2rem;
+			border-radius: 0.3rem;
 			padding: 0.5rem 3rem;
 			cursor: pointer;
 			transition: background-color 0.3s;
@@ -123,14 +132,14 @@
 				font-size: 15px;
 			}
 
-		.searchResult {
-			border: solid black;
+		.searchResult{
+			border:solid black;
 			padding: 1%;
 			margin: 2%;
 			background-color: white;
 		}
 
-		.annonser {
+		.annonser { 
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
@@ -141,7 +150,7 @@
 			width: 100%;
 		}
 
-		.ordrar {
+		.ordrar{
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
@@ -152,15 +161,15 @@
 			width: 100%;
 		}
 
-		.saker {
+		.saker{
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
-			width: 30%;
+			width:30%;
 		}
 
 		.product-container {
-			display: flex;
+			display:flex;
 			position: relative;
 			display: inline-block;
 		}
@@ -178,11 +187,11 @@
 			visibility: visible;
 		}
 
-		.body {
+		.body{
 			background-color: #fffaf0;
 		}
 
-		.left-columnMember {
+		.left-columnMember{
 			flex: 2;
 			margin-right: 2%;
 			margin-top: 10%;
@@ -205,46 +214,40 @@
 				background-color: white;
 				border-color: green;
 			}
-
 		a {
-			text-decoration: none;
+			text-decoration:none;
 		}
+		
 
-		}
 	</style>
 </head>
 <body class="body">
 	<nav class="nav">
-		<img src="/Images/logotyp (1).png" width="10%" height="10%" alt="logotyp" style="padding-right: 2%; padding-left: 2% " />
-		<div class="left-column">
+		<div class="nav-left">
+			<img src="~/Images/logotyp (1).png" alt="Logotyp" style="width:inherit"/>
+			<span style="margin:2%"></span>
 			<a asp-controller="Products" asp-action="@(User.Identity.IsAuthenticated ? "Members" : "Index")">Hem</a>
 		</div>
-		<img src="~/Images/MicrosoftTeams-image (12).png" width="15%" height="15%" alt="logotitle" style="padding-right:2%; padding-left: 2%" />
-		@if (User.Identity.IsAuthenticated)
-		{
-
-			<div class="left-column">
-			</div>
-			<div style="font-size: 110%">Välkommen @User.Identity.Name!</div>
-			<span class="separator"></span>
-			<div class="login-links">
+		<div class="nav-center">
+			<img src="~/Images/PickAppName.png" alt="logotitle" style="width:50%; margin: 1%" />
+		</div>
+		<div class="nav-right">
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div>Välkommen @User.Identity.Name!</div>
+				<span style="margin:2%"></span>
 				<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
-			</div>
-		}
-		else
-		{
-			<div class="left-column">
-			</div>
-			<div class="login-links">
+			}
+			else
+			{
 				<a asp-controller="Account" asp-action="Register">Skapa ny användare</a>
-				<span class="separator"></span>
+				<span style="margin:2%"></span>
 				<a asp-controller="Account" asp-action="LogIn">Logga in</a>
-			</div>
-
-		}
+			}
+		</div>
 	</nav>
 
 	@RenderBody()
 </body>
-@RenderSection("scripts", false)
+	@RenderSection("scripts", false)
 </html>
