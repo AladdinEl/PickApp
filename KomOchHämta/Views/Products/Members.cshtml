@@ -22,7 +22,8 @@
 				}
 			}
 		</div>
-		<div class="ordrar">Mina reservationer</div>
+		<div class="ordrar">
+		<div >Mina reservationer</div>
 			@foreach (var item in Model)
 			{
 				if (item.ReservedBy == userManager.GetUserId(User))
@@ -33,6 +34,7 @@
 						</div>
 				}
 			}
+		</div>
 	</div>
 </div>
 
