@@ -23,8 +23,7 @@
 				text-decoration: none;
 				color: #333333;
 				font-size: 150%;
-				 font-weight:bold;
-
+				font-weight: bold;
 			}
 
 				nav a:hover {
@@ -46,8 +45,8 @@
 			display: flex;
 			flex-wrap: wrap;
 			text-align: center;
-			margin: 1%; 
-			border:solid black;
+			margin: 1%;
+			border: solid black;
 			width: 15%;
 			background-color: white;
 		}
@@ -59,12 +58,11 @@
 			align-items: center;
 			justify-content: center;
 			height: 90vh;
-			text-align:center;
+			text-align: center;
 		}
 
 		.left-column {
 			flex: 2;
-			
 		}
 
 		.right-column {
@@ -112,7 +110,7 @@
 			display: block;
 			color: #fff;
 			border: none;
-			border-radius: 0.3rem;
+			border-radius: 2rem;
 			padding: 0.5rem 3rem;
 			cursor: pointer;
 			transition: background-color 0.3s;
@@ -125,14 +123,14 @@
 				font-size: 15px;
 			}
 
-		.searchResult{
-			border:solid black;
+		.searchResult {
+			border: solid black;
 			padding: 1%;
 			margin: 2%;
 			background-color: white;
 		}
 
-		.annonser { 
+		.annonser {
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
@@ -143,7 +141,7 @@
 			width: 100%;
 		}
 
-		.ordrar{
+		.ordrar {
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
@@ -154,15 +152,15 @@
 			width: 100%;
 		}
 
-		.saker{
+		.saker {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
-			width:30%;
+			width: 30%;
 		}
 
 		.product-container {
-			display:flex;
+			display: flex;
 			position: relative;
 			display: inline-block;
 		}
@@ -180,11 +178,11 @@
 			visibility: visible;
 		}
 
-		.body{
+		.body {
 			background-color: #fffaf0;
 		}
 
-		.left-columnMember{
+		.left-columnMember {
 			flex: 2;
 			margin-right: 2%;
 			margin-top: 10%;
@@ -207,19 +205,20 @@
 				background-color: white;
 				border-color: green;
 			}
-		a {
-			text-decoration:none;
-		}
-		
 
+		a {
+			text-decoration: none;
+		}
+
+		}
 	</style>
 </head>
 <body class="body">
 	<nav class="nav">
-		<img src="/Images/logotyp (1).png" width="10%" height="10%" alt="logotyp" style="padding-right: 2%; padding-left: 2% "/>
-			<div class="left-column">
-		<a asp-controller="Products" asp-action="@(User.Identity.IsAuthenticated ? "Members" : "Index")">Hem</a>
-			</div>
+		<img src="/Images/logotyp (1).png" width="10%" height="10%" alt="logotyp" style="padding-right: 2%; padding-left: 2% " />
+		<div class="left-column">
+			<a asp-controller="Products" asp-action="@(User.Identity.IsAuthenticated ? "Members" : "Index")">Hem</a>
+		</div>
 		<img src="~/Images/MicrosoftTeams-image (12).png" width="15%" height="15%" alt="logotitle" style="padding-right:2%; padding-left: 2%" />
 		@if (User.Identity.IsAuthenticated)
 		{
@@ -229,7 +228,7 @@
 			<div style="font-size: 110%">Välkommen @User.Identity.Name!</div>
 			<span class="separator"></span>
 			<div class="login-links">
-			<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
+				<a asp-controller="Account" asp-action="LogOut">Logga ut</a>
 			</div>
 		}
 		else
@@ -247,5 +246,5 @@
 
 	@RenderBody()
 </body>
-	@RenderSection("scripts", false)
+@RenderSection("scripts", false)
 </html>
