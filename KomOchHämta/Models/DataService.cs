@@ -113,14 +113,13 @@ namespace KomOchHämta.Models
         internal void Reserve(DetailsVM details, string reservedBy)
         {              
             var model = context.Products.Find(details.Id);
-            if (model != null /*&& !model.Reserved*/)
+            if (model != null )
             {       
                 model.Reserved = !model.Reserved;
                 if (model.Reserved)
                 model.ReservedBy = reservedBy;
                 else
                 model.ReservedBy = null;
-                //model.UserId = userId;
                 context.SaveChanges();
             }
         }
