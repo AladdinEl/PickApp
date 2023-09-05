@@ -23,11 +23,11 @@
             <label asp-for="Image"></label>
             <input asp-for="Image" type="file" style="margin-bottom: 20px;" />
 
-            <input class="green-button" type="submit" value="Skapa" @* style="margin-top: 20px; background-color: #01571D; color: #fff; padding: 10px 20px;" *@ />
+            <input class="input-button" type="submit" value="Spara" @* style="margin-top: 20px; background-color: #01571D; color: #fff; padding: 10px 20px;" *@ />
 
         </div>
 </form>
-<a asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
+@* <a asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a> *@
 </div>
 
 
