@@ -1,4 +1,5 @@
 ﻿@model DetailsVM
+@using Microsoft.AspNetCore.Identity
 
 <div style="display: flex; justify-content: space-between; padding-top: 5%; padding:4%; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); margin: 5% 10% ">
 	<div style="display: flex; flex-direction: column; float: right; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); width: 33%; height: 100%;">
@@ -7,7 +8,10 @@
 	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 100%; width: 33%; ">
 		<div>
 			<h2>@Model.ProductName</h2>
-			<p style="font-size:small;">@Model.Created</p>
+			@{
+				var createdUser = await userManager.FindByIdAsync(Model.UserId);
+				<div style="font-size:small; font-style:italic">Upplagd @Model.Created av @createdUser.UserName</div>
+			}
 		</div>
 		<p>@Model.Description</p>
 
@@ -24,7 +28,8 @@
 			<div>Detta är din annons.</div>
 			if (Model.Reserved)
 			{
-				<div>Varan är reserverad.</div>
+				var reservedUser = await userManager.FindByIdAsync(Model.ReservedBy);
+				<div>Varan är reserverad av @reservedUser.UserName</div>
 				<input class="login-button" type="submit" value="Ta bort reservation" />
 			}
 		}
