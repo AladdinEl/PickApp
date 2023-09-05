@@ -18,11 +18,11 @@
 		<div>
 			@if (Model.UserId == userManager.GetUserId(User))
 			{
-				<a class="login-button" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id">Redigera</a>
+				<a class="green-button" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id">Redigera</a>
 			}
 		</div>
 	</div>
-	<form asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
+	<form style="width: 25%;" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
 			<div>Detta är din annons.</div>
@@ -30,7 +30,7 @@
 			{
 				var reservedUser = await userManager.FindByIdAsync(Model.ReservedBy);
 				<div>Varan är reserverad av @reservedUser.UserName</div>
-				<input class="login-button" type="submit" value="Ta bort reservation" />
+				<input class="green-button" type="submit" value="Ta bort reservation" />
 			}
 		}
 		else if (Model.Reserved)
@@ -38,17 +38,17 @@
 			<div>Reserverad!</div>
 			if (Model.ReservedBy == userManager.GetUserId(User))
 			{
-				<input class="login-button" style="background-color:red;" type="submit" value="Avboka" />
+				<input class="green-button" style="background-color:red;" type="submit" value="Avboka" />
 			}
 		}
 		else
 		{
-			<input class="login-button" type="submit" value="Reservera" />
+			<input class="green-button" type="submit" value="Reservera" />
 		}
 
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
-			<a class="login-button" style="background-color:red" asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
+			<a class="button" style="background-color:red" asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
 		}
 	</form>
 </div>
