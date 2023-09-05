@@ -5,15 +5,15 @@
 	<div style="display: flex; flex-direction: column; float: right; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); width: 33%; height: 100%;">
 		<img src="@Model.Image" alt="Image" style="height: 100%; width: 100%;" />
 	</div>
-	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 100%; width: 33%; ">
+	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 290px; width: 33%; ">
 		<div>
 			<h2>@Model.ProductName</h2>
 			@{
 				var createdUser = await userManager.FindByIdAsync(Model.UserId);
 				<div style="font-size:small; font-style:italic">Upplagd @Model.Created av @createdUser.UserName</div>
 			}
-		</div>
 		<p>@Model.Description</p>
+		</div>
 
 		<div>
 			@if (Model.UserId == userManager.GetUserId(User))
@@ -22,7 +22,8 @@
 			}
 		</div>
 	</div>
-	<form style="width: 25%;" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
+	<form style="width: 25%; display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 300px; width: 33%;" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
+		
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
 			<div>Detta är din annons.</div>
@@ -52,6 +53,7 @@
 		}
 	</form>
 </div>
+
 
 
 
