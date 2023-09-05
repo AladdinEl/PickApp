@@ -1,10 +1,10 @@
 ﻿@model DetailsVM
 
 <div style="display: flex; justify-content: space-between; padding-top: 5%; padding:4%; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); margin: 5% 10% ">
-	<div style="display: flex; flex-direction: column; float: right; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); width: 33%; height: 33%;">
+	<div style="display: flex; flex-direction: column; float: right; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); width: 33%; height: 100%;">
 		<img src="@Model.Image" alt="Image" style="height: 100%; width: 100%;" />
 	</div>
-	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 33%; width: 33%; ">
+	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; padding-right: 40px; height: 100%; width: 33%; ">
 		<div>
 			<h2>@Model.ProductName</h2>
 			<p style="font-size:small;">@Model.Created</p>
@@ -19,33 +19,34 @@
 		</div>
 	</div>
 	<form asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
-		@if (!Model.Reserved && Model.UserId != userManager.GetUserId(User))
+		@if (Model.UserId == userManager.GetUserId(User))
+		{
+			<div>Detta är din annons.</div>
+			if (Model.Reserved)
+			{
+				<div>Varan är reserverad.</div>
+				<input class="login-button" type="submit" value="Ta bort reservation" />
+			}
+		}
+		else if (Model.Reserved)
+		{
+			<div>Reserverad!</div>
+			if (Model.ReservedBy == userManager.GetUserId(User))
+			{
+				<input class="login-button" style="background-color:red" type="submit" value="Avboka" />
+			}
+		}
+		else
 		{
 			<input class="login-button" type="submit" value="Reservera" />
-		}
-		else if (Model.ReservedBy == userManager.GetUserId(User) && Model.Reserved)
-		{
-			<input class="login-button" style="background-color:red" type="submit" value="Avboka" />
-		}
-		else if (Model.UserId == userManager.GetUserId(User) && Model.Reserved)
-		{
-			<div>Detta är din annons</div>
-			<input class="login-button" type="submit" value="Ta bort reservation" />
-		}
-		else if (Model.ReservedBy != userManager.GetUserId(User) && Model.Reserved)
-		{
-			<div>Reserverad</div>
-		}
-		else if (Model.UserId == userManager.GetUserId(User) && !Model.Reserved)
-		{
-			<div>Detta är din annons</div>
 		}
 
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
-
 			<a class="login-button" style="background-color:red" asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
 		}
 	</form>
 </div>
+
+
 
