@@ -9,6 +9,8 @@ namespace KomOchHämta.Views.Products
         [Display(Name = "Produktnamn")]
         [StringLength(50, MinimumLength = 2)]
         public string ProductName { get; set; }
+
+        [Display(Name = "Bild")]
         public IFormFile? Image { get; set; }
 
         [Display(Name = "Beskrivning")]

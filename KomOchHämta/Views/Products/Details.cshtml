@@ -12,16 +12,17 @@
 		<form  asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
 			@if (!Model.Reserved && Model.UserId != userManager.GetUserId(User))
 			{
-				<input type="submit" value="Reservera" />
+					<input class="login-button" type="submit" value="Reservera" />
 			}
 			else if (Model.ReservedBy == userManager.GetUserId(User) && Model.Reserved)
 			{
-				<input type="submit" value="Avboka" />
+					<input class="login-button" style="background-color:red" type="submit" value="Avboka" />
 			}
 			else if (Model.UserId == userManager.GetUserId(User) && Model.Reserved)
 			{
 				<div>Detta är din annons</div>
-				<input type="submit" value="Ta bort reservation" />
+					<input class="login-button" type="submit" value="Ta bort reservation" />
+					<a asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>	
 			}
 			else if (Model.ReservedBy != userManager.GetUserId(User) && Model.Reserved)
 			{
@@ -30,6 +31,7 @@
 			else if (Model.UserId == userManager.GetUserId(User) && !Model.Reserved)
 			{
 				<div>Detta är din annons</div>
+					<a asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id">Ta bort annons</a>
 			}
 
 		</form>
