@@ -9,12 +9,12 @@
         <h3 style="padding: 2%" class="login-form">Logga in</h3>
 <hr />
         <form class="login-form" asp-controller="Account" asp-action="Login">
-            <label class="login-form" asp-for="Username"></label>
-            <input class="login-form" asp-for="Username" />
+            <label asp-for="Username"></label>
+            <input asp-for="Username" />
             <span asp-validation-for="Username"></span>
 
-            <label class="login-form" asp-for="Password"></label>
-            <input class="login-form" asp-for="Password" />
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
             <span asp-validation-for="Password"></span>
             <br />
             <input class="login-button" type="submit" value="Logga in" />

@@ -86,7 +86,8 @@
 		.right-column {
 			flex: 3;
 			background-color: #fffaf0;
-			height: 80%;
+			max-height: 80%;
+			padding: 5%;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -95,15 +96,21 @@
 
 		.login-form {
 			max-width: 80%;
+			min-width:fit-content;
+			height:auto;
 			margin: 0 auto;
 			text-align: center;
+			display:flex;
+			justify-content:center;
+			flex-direction: column;
+			align-items: center;
 		}
 
 			.login-form label,
 			.login-form input,
 			.login-form span {
 				display: block;
-				margin-bottom: 10px;
+				margin-bottom: 2%;
 			}
 
 				.login-form input[type="submit"] {
@@ -115,22 +122,26 @@
 					text-align: center;
 				}
 
-		.login-button {
+		.login-button
+		/* .login-button input[type="submit"],
+		.login-button a */
+		{
 			background-color: #01571D;
 			display: block;
 			color: #fff;
 			border: none;
 			border-radius: 2rem;
-			padding: 0.5rem 3rem;
+			padding: 3% 2%;
 			cursor: pointer;
 			transition: background-color 0.3s;
 			font-family: 'Lucida Handwriting': center;
-			margin: 10px auto;
+			width: 70%;
+			font-size: 80%;
+			text-align: center;
 		}
 
 			.login-button:hover {
 				box-shadow: 0 0 10px green;
-				font-size: 15px;
 			}
 
 
