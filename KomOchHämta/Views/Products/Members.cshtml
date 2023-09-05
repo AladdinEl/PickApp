@@ -1,11 +1,12 @@
 ﻿@model MembersVM[]
 
-<a asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
-<div style="display:flex; flex-direction:row; justify-content: space-between">
-	<div style="padding: 3%">
+<div style="display:flex; flex-direction:row; justify-content: space-between;margin:3%">
+	<div>
 		<h1>Händelser och nyheter</h1>
 		<p>Här kommer nyheter och annan information dyka upp och uppdateras regelbundet.</p>
 	</div>
+
+	<a class="green-button" style="width:10%; height: 2%; padding: 0.5% 0.2%; margin-top: 1%;" asp-controller="Products" asp-action="CreateNew">Skapa ny annons</a>
 
 	<div class="saker" style="display:flex; flex-direction:row">
 		<div class="annonser">
