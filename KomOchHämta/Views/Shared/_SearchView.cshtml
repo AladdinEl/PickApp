@@ -1,12 +1,12 @@
 ﻿
 
 
-<div class="left-columnMember" style="height: 100%">
-    
-    <form asp-controller="Products" asp-action="SearchProductsMember" id="search-form" style="padding-left: 3%; padding-top: 2%;">
+<div class="left-columnMember" style="height: 100%; padding-left: 3%; padding-top: 2%;">
+
+    <form asp-controller="Products" asp-action="SearchProductsMember" id="search-form">
     <input type="search" name="search" id="search" placeholder="Sök produkt..."/>
     @* <button type="submit">Sök</button> *@
-</form>
+    </form>
 <ul class="products">
     @foreach (var item in Model)
     {
@@ -18,7 +18,7 @@
                  }
                  else
                  {
-                     <img src="/Images/stuff.jpg" alt="Image" width="100%">
+                        <img src="/Images/stuff.jpg" alt="Image" style="width:100%; height:100%; object-fit:cover; object-position:center center">
                  }
                 </div>
                 <div>@item.ProductName</div>
