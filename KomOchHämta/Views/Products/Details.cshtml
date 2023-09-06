@@ -15,23 +15,19 @@
 		<p style ="margin-top: 4%">@Model.Description</p>
 		</div>
 
-		@if (Model.UserId == userManager.GetUserId(User))
-		{
-			<a class="button" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id">Redigera</a>
-		}
-		
 	</div>
-	<div style="display: flex; flex-direction: column; justify-content: space-between; float: left; margin-left:2%; min-height: 100%; width: 20%;">
+	<div style="font-size:small; display: flex; flex-direction: column; justify-content: space-between; float: left; margin-left:2%; min-height: 100%; width: 20%;">
 		<form style="min-height:100%; display: flex; flex-direction: column; justify-content: space-between" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" asp-route-reservedBy="@userManager.GetUserId(User)">
 		
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
 			<div>Detta är din annons.</div>
+			<a class="button" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id">Redigera</a>
 			if (Model.Reserved)
 			{
 				var reservedUser = await userManager.FindByIdAsync(Model.ReservedBy);
 				<div>Varan är reserverad av @reservedUser.UserName</div>
-				<input class="input-button" type="submit" value="Ta bort reservation" />
+				<input class="input-button" style="background-color:orange;" type="submit" value="Ta bort reservation" />
 			}
 		}
 		else if (Model.Reserved)
