@@ -125,5 +125,7 @@ namespace KomOchHämta.Controllers
             dataService.Delete(id);
             return RedirectToAction(nameof(Members));
         }
+
+
     }
 }

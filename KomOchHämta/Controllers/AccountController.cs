@@ -52,6 +52,7 @@ namespace KomOchHämta.Controllers
 		[HttpGet("login")]
 		public IActionResult Login()
 		{
+			TempData["ReturnUrl"] = Request.Headers["Referer"].ToString();
 			return View();
 		}
 
@@ -67,6 +68,14 @@ namespace KomOchHämta.Controllers
 				ModelState.AddModelError(string.Empty, errorMessage);
 				return View();
 			}
+
+			var returnUrl = TempData["ReturnUrl"]?.ToString();
+			if (!string.IsNullOrEmpty(returnUrl))
+			{
+				TempData.Remove("ReturnUrl");
+				return Redirect(returnUrl);
+			}
+
 			return RedirectToAction("Members", "Products");
 		}
 
