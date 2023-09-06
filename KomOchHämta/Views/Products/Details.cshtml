@@ -12,8 +12,10 @@
 				var createdUser = await userManager.FindByIdAsync(Model.UserId);
 				<div style="font-size:small; font-style:italic">Upplagd @Model.Created av @createdUser.UserName</div>
 			}
-		<p style ="margin-top: 4%">@Model.Description</p>
 		</div>
+		<p style ="margin-top: 4%">@Model.Description</p>
+		<p>Upphämtningsplats: @Model.Location</p>
+		
 
 	</div>
 	<div style="font-size:small; display: flex; flex-direction: column; justify-content: space-between; float: left; margin-left:2%; min-height: 100%; width: 20%;">
@@ -21,13 +23,17 @@
 		
 		@if (Model.UserId == userManager.GetUserId(User))
 		{
+		
 			<div>Detta är din annons.</div>
 			<a class="button" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id">Redigera</a>
+		
 			if (Model.Reserved)
 			{
 				var reservedUser = await userManager.FindByIdAsync(Model.ReservedBy);
+			
 				<div>Varan är reserverad av @reservedUser.UserName</div>
 				<input class="input-button" style="background-color:orange;" type="submit" value="Ta bort reservation" />
+				
 			}
 		}
 		else if (Model.Reserved)
