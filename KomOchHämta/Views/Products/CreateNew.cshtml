@@ -12,12 +12,12 @@
 
 
             <label asp-for="Description"></label>
-            <textarea asp-for="Description" rows="4" cols="50" placeholder="Beskriv varan" style="margin-bottom: 20px;"></textarea>
+            <textarea asp-for="Description" rows="4" cols="50" placeholder="Beskriv varan så utförligt som möjligt t.ex. mått, färg eventuella defekter etc." style="margin-bottom: 20px;"></textarea>
 
         </div>
         <div style="display: flex; flex-direction: column; float: right; padding-left: 40px;">
             <label asp-for="Message"></label>
-            <textarea asp-for="Message" rows="4" cols="50" placeholder="Meddelande till upphämtaren (Skickas på mail efter bokning.)" style="margin-bottom: 20px;"></textarea>
+            <textarea asp-for="Message" rows="4" cols="50" placeholder="Detta meddelande skickas endast till den person som bokat varan. Ange eventuella upphämtningstider eller annat som du vill informera om." style="margin-bottom: 20px;"></textarea>
 
             <label asp-for="Image"></label>
             <input asp-for="Image" type="file" style="margin-bottom: 20px;" />

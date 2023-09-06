@@ -25,7 +25,7 @@ namespace KomOchHämta.Views.Products
         [Display(Name = "Plats")]
         public string? Location { get; set; }
 
-        [Display(Name = "Meddelande till upphämtare (skickas på mail)")]
+        [Display(Name = "Meddelande till upphämtare")]
         public string? Message { get; set; }
     }
 }
