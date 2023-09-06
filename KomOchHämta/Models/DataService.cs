@@ -40,7 +40,8 @@ namespace KomOchHämta.Models
                 {
                     Id = o.Id,
                     ProductName = o.ProductName,
-                    Image = o.Image
+                    Image = o.Image,
+                    Location = o.Location
                 })
             .ToArray();
 
@@ -55,7 +56,8 @@ namespace KomOchHämta.Models
                     ProductName = o.ProductName,
                     Image = o.Image,
                     UserId = o.UserId,
-                    ReservedBy=o.ReservedBy
+                    ReservedBy = o.ReservedBy,
+                    Location = o.Location
                 })
             .ToArray();
         }
@@ -71,8 +73,9 @@ namespace KomOchHämta.Models
                 {
                     Id = o.Id,
                     ProductName = o.ProductName,
-                    Image = o.Image
-                })
+                    Image = o.Image,
+					Location = o.Location,
+				})
             .ToArray();
         }
 
@@ -87,8 +90,10 @@ namespace KomOchHämta.Models
                     {
                         Id = o.Id,
                         ProductName = o.ProductName,
-                        Image = o.Image
-                    })
+                        Image = o.Image,
+                        Location = o.Location,
+
+					})
                 .ToArray();
         }
 
@@ -103,6 +108,7 @@ namespace KomOchHämta.Models
                     Created = o.Created,
                     Description = o.Description,
                     Image = o.Image,
+                    Location = o.Location,
                     Reserved = o.Reserved,
                     UserId = o.UserId,
                     ReservedBy = o.ReservedBy,

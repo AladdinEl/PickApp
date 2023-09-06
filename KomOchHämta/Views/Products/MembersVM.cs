@@ -13,5 +13,6 @@ namespace KomOchHämta.Views.Products
         public string UserId { get; set; }
         public string ReservedBy { get; set; }
         public bool Reserved {  get; set; }
+        public string Location { get; set; }
     }
 }
