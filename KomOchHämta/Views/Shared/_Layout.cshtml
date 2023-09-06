@@ -8,7 +8,6 @@
 	<style>
 		nav {
 			background-color: #A5D265;
-			/* height: 30%; */
 			padding: 1%;
 			padding-left: 1%;
 			padding-right: 1%;
@@ -16,7 +15,6 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-end;
-			margin-bottom: 95%;
 		}
 
 			nav a {
@@ -135,28 +133,6 @@
 					text-align: center;
 				}
 
-		/* .login-button
-		/* .login-button input[type="submit"],
-		.login-button a */
-		/* {
-			background-color: #01571D;
-			display: block;
-			color: #fff;
-			border: none;
-			border-radius: 2rem;
-			padding: 3% 2%;
-			cursor: pointer;
-			transition: background-color 0.3s;
-			font-family: 'Lucida Handwriting': center;
-			width: 70%;
-			font-size: 80%;
-			text-align: center;
-		} */
-
-			/* .login-button:hover {
-				box-shadow: 0 0 10
-			}px green; */ 
-
 		.input-button
 		{
 			background-color: #01571D;
@@ -248,6 +224,10 @@
 
 		.body {
 			background-color: #fffaf0;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			margin: 0;
 		}
 
 		.left-columnMember {
@@ -279,6 +259,18 @@
 			text-decoration: none;
 			color:black;
 		}
+		footer{
+			background-color: #A5D265;
+			box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.2);
+			padding: 1%;
+			text-align: center;
+			color: white;
+			margin-top: 4%;
+		}
+
+		.Renderbody {
+			flex-grow: 1;
+		}
 	</style>
 </head>
 <body class="body">
@@ -306,8 +298,13 @@
 			}
 		</div>
 	</nav>
-
+	<div class="Renderbody">
 	@RenderBody()
+	</div>
+	<footer>
+		<div style="padding: 1%">hejsan</div>
+	</footer>
 </body>
 @RenderSection("scripts", false)
+
 </html>
