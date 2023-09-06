@@ -21,6 +21,7 @@
 			<div class="answer">
 				<p>Svar: Vi värnar om din integritet. Dina personuppgifter behandlas med högsta säkerhet och delas inte med tredje part.</p>
 			</div>
+
 		</div>	
 		
 		<div class="question" onclick="toggleAnswer(this)">
@@ -48,6 +49,7 @@
 <script>
 	function toggleAnswer(question) {
 		const answer = question.querySelector(".answer");
+		question.classList.toggle("opened");
 
 		if (answer.style.display === "none" || answer.style.display === "") {
 			answer.style.display = "block";
