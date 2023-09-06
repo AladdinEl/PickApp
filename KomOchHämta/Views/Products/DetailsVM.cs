@@ -9,8 +9,9 @@
 		public string UserId { get; set; }
 
 		public string Location { get; set; }
+        public string Message { get; set; }
 
-		public DateTime Created { get; set; }
+        public DateTime Created { get; set; }
         public bool Reserved { get; set; }
 		public string? ReservedBy { get; set; }
 
