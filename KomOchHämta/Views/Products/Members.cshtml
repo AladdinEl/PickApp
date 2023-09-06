@@ -10,7 +10,7 @@
 
 	<div class="saker" style="display:flex; flex-direction:row">
 		<div class="annonser">
-		<div>Mina annonser</div>
+		<h4>Mina annonser</h4>
 			@foreach (var item in Model)
 			{
 				if (item.UserId == userManager.GetUserId(User))
@@ -33,7 +33,7 @@
 			}
 		</div>
 		<div class="ordrar">
-		<div >Mina reservationer</div>
+		<h4>Mina reservationer</h4>
 			@foreach (var item in Model)
 			{
 				if (item.ReservedBy == userManager.GetUserId(User))

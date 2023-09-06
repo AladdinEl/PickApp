@@ -112,6 +112,7 @@ namespace KomOchHämta.Models
                     Reserved = o.Reserved,
                     UserId = o.UserId,
                     ReservedBy = o.ReservedBy,
+                    Message = o.Message
                 })
                 .SingleOrDefault();
                     

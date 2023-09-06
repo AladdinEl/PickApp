@@ -41,6 +41,10 @@
 			<div>Reserverad!</div>
 			if (Model.ReservedBy == userManager.GetUserId(User))
 			{
+					<div style="padding: 5%; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2); height: 50%; background-color: #E4F2D1">
+						<p style="font-weight:600">Meddelande från @createdUser.UserName:</p>
+						<p>@Model.Message</p>
+					</div>
 				<input class="input-button" style="background-color:red;" type="submit" value="Avboka" />
 			}
 		}

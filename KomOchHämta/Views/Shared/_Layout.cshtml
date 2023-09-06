@@ -48,6 +48,7 @@
 			width: 33%;
 			display: flex;
 			justify-content: right;
+			padding-right: 2%;
 		}
 
 		.center {
@@ -264,7 +265,7 @@
 			box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.2);
 			padding: 1%;
 			text-align: center;
-			color: white;
+			color: #333333;
 			margin-top: 4%;
 		}
 
@@ -311,7 +312,26 @@
 		@RenderBody()
 	</div>
 	<footer>
-		<div style="padding: 1%">hejsan</div>
+		<div style="display:flex; justify-content:space-between;">
+			<div class="nav-left" style="flex-direction:column; padding-right:20%; align-items: flex-start;">
+				<p>Information</p>
+				<p>Om oss</p>
+				<p>FAQ</p>
+			</div>
+			<div class="nav-center" style="justify-content: space-evenly; padding: 2%; ">
+				<img src="~/images/739244.png" width="7%" />
+				<img src="~/images/microsoftteams-image (7).png" width="7%" />
+				<img src="~/images/microsoftteams-image (6).png" width="7%" />
+				<img src="~/images/twitter-logо.png" width="6%" />
+			</div>
+			<div class="nav-right" style="flex-direction:column; padding-left:20%;">
+				<p>Kontaktuppgifter</p>
+				<p>Solnavägen 3H<br/>113 63 Stockholm</p>
+				<p>PickApp@@gmail.com <br />0771xxxxxx</p>
+			</div>
+		</div>
+		<hr />
+		<div style="padding: 1%">© 2023 PickApp</div>
 	</footer>
 </body>
 @RenderSection("scripts", false)
