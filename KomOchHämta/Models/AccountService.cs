@@ -83,7 +83,5 @@ namespace KomOchHämta.Models
 		{
 			await signInManager.SignOutAsync();
 		}
-
-
 	}
 }
