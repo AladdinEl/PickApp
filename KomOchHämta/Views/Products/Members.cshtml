@@ -24,12 +24,10 @@
 						}
 						else
 						{
-							<a style="color: red" class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
+							<a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/grön-bock.png" alt="deleteknapp" width="8" height="8" /></a>
+							<a style="color: green" class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName <span style="color:black; font-style: italic">Bokad</span></a>
 							<div class="productImg"><img src="@item.Image" alt="ProductImage" witdh="50" height="50"></div>
 						}
-							@* <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id"> <img src="~/images/röttkryss.png" alt="deleteknapp" width="8" height="8" /></a>
-							<a class="productName" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.ProductName</a>
-							<div class="productImg"><img src="@item.Image" alt="ProductImage" witdh="50" height="50"></div> *@
 						</div>
 				}
 			}
