@@ -126,6 +126,10 @@ namespace KomOchHämta.Controllers
             return RedirectToAction(nameof(Members));
         }
 
-
+        [HttpGet("/AboutUs")]
+        public IActionResult AboutUs()
+        {
+			return View();
+		}
     }
 }

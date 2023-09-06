@@ -72,15 +72,16 @@
 			margin-left: 0;
 			border: solid 1px black;
 			max-width: 15%;
-			max-height:contain;
+			max-height: contain;
 			background-color: white;
 			padding: 0.5%;
 		}
-		.img-container{
-			height:80%; 
-			width:100%; 
-			overflow:hidden; 
-			text-align:center;
+
+		.img-container {
+			height: 80%;
+			width: 100%;
+			overflow: hidden;
+			text-align: center;
 		}
 
 		/* ----------------------------------------------------------------------------------- */
@@ -107,12 +108,12 @@
 
 		.login-form {
 			max-width: 80%;
-			min-width:fit-content;
-			height:auto;
+			min-width: fit-content;
+			height: auto;
 			margin: 0 auto;
 			text-align: center;
-			display:flex;
-			justify-content:center;
+			display: flex;
+			justify-content: center;
 			flex-direction: column;
 			align-items: center;
 		}
@@ -133,34 +134,32 @@
 					text-align: center;
 				}
 
-		.input-button
-		{
+		.input-button {
 			background-color: #01571D;
 			color: #fff;
 			border-radius: 2rem;
 			padding: 8px;
-			transition: background-color 0.3s;			
+			transition: background-color 0.3s;
 			max-width: 150px;
 			font-size: 80%;
 			text-align: center;
 			border: none;
 		}
-			
-			.input-button:hover {
-			box-shadow: 0 0 10px green;
-			} 
 
-		.button 
-		{
-				background-color: #01571D;
-				color: #fff;
-				border-radius: 2rem;
-				padding: 8px;
-				transition: background-color 0.3s;
-				max-width: 150px;
-				font-size: 80%;
-				text-align: center;
-				border: none;
+			.input-button:hover {
+				box-shadow: 0 0 10px green;
+			}
+
+		.button {
+			background-color: #01571D;
+			color: #fff;
+			border-radius: 2rem;
+			padding: 8px;
+			transition: background-color 0.3s;
+			max-width: 150px;
+			font-size: 80%;
+			text-align: center;
+			border: none;
 		}
 
 			.button:hover {
@@ -234,7 +233,7 @@
 			margin: 2%;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 			width: 65%;
-			height:fit-content; 
+			height: fit-content;
 			padding: 3%;
 		}
 
@@ -257,9 +256,10 @@
 
 		a {
 			text-decoration: none;
-			color:black;
+			color: black;
 		}
-		footer{
+
+		footer {
 			background-color: #A5D265;
 			box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.2);
 			padding: 1%;
@@ -270,6 +270,15 @@
 
 		.Renderbody {
 			flex-grow: 1;
+		}
+
+		.AboutUs {
+			margin: 6%;
+		 box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+			padding: 5%;
+			padding-left: 20%;
+			padding-right: 20%;
+			font-size: 120%;
 		}
 	</style>
 </head>
@@ -299,7 +308,7 @@
 		</div>
 	</nav>
 	<div class="Renderbody">
-	@RenderBody()
+		@RenderBody()
 	</div>
 	<footer>
 		<div style="padding: 1%">hejsan</div>
