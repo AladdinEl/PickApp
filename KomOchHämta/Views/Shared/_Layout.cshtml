@@ -48,6 +48,7 @@
 			width: 33%;
 			display: flex;
 			justify-content: right;
+			padding-right: 2%;
 		}
 
 		.center {
@@ -72,15 +73,16 @@
 			margin-left: 0;
 			border: solid 1px black;
 			max-width: 15%;
-			max-height:contain;
+			max-height: contain;
 			background-color: white;
 			padding: 0.5%;
 		}
-		.img-container{
-			height:80%; 
-			width:100%; 
-			overflow:hidden; 
-			text-align:center;
+
+		.img-container {
+			height: 80%;
+			width: 100%;
+			overflow: hidden;
+			text-align: center;
 		}
 
 		/* ----------------------------------------------------------------------------------- */
@@ -107,12 +109,12 @@
 
 		.login-form {
 			max-width: 80%;
-			min-width:fit-content;
-			height:auto;
+			min-width: fit-content;
+			height: auto;
 			margin: 0 auto;
 			text-align: center;
-			display:flex;
-			justify-content:center;
+			display: flex;
+			justify-content: center;
 			flex-direction: column;
 			align-items: center;
 		}
@@ -133,34 +135,32 @@
 					text-align: center;
 				}
 
-		.input-button
-		{
+		.input-button {
 			background-color: #01571D;
 			color: #fff;
 			border-radius: 2rem;
 			padding: 8px;
-			transition: background-color 0.3s;			
+			transition: background-color 0.3s;
 			max-width: 150px;
 			font-size: 80%;
 			text-align: center;
 			border: none;
 		}
-			
-			.input-button:hover {
-			box-shadow: 0 0 10px green;
-			} 
 
-		.button 
-		{
-				background-color: #01571D;
-				color: #fff;
-				border-radius: 2rem;
-				padding: 8px;
-				transition: background-color 0.3s;
-				max-width: 150px;
-				font-size: 80%;
-				text-align: center;
-				border: none;
+			.input-button:hover {
+				box-shadow: 0 0 10px green;
+			}
+
+		.button {
+			background-color: #01571D;
+			color: #fff;
+			border-radius: 2rem;
+			padding: 8px;
+			transition: background-color 0.3s;
+			max-width: 150px;
+			font-size: 80%;
+			text-align: center;
+			border: none;
 		}
 
 			.button:hover {
@@ -234,7 +234,7 @@
 			margin: 2%;
 			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 			width: 65%;
-			height:fit-content; 
+			height: fit-content;
 			padding: 3%;
 		}
 
@@ -257,14 +257,15 @@
 
 		a {
 			text-decoration: none;
-			color:black;
+			color: black;
 		}
-		footer{
+
+		footer {
 			background-color: #A5D265;
 			box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.2);
 			padding: 1%;
 			text-align: center;
-			color: white;
+			color: #333333;
 			margin-top: 4%;
 		}
 
@@ -299,10 +300,29 @@
 		</div>
 	</nav>
 	<div class="Renderbody">
-	@RenderBody()
+		@RenderBody()
 	</div>
 	<footer>
-		<div style="padding: 1%">hejsan</div>
+		<div style="display:flex; justify-content:space-between;">
+			<div class="nav-left" style="flex-direction:column; padding-right:20%; align-items: flex-start;">
+				<p>Information</p>
+				<p>Om oss</p>
+				<p>FAQ</p>
+			</div>
+			<div class="nav-center" style="justify-content: space-evenly; padding: 2%; ">
+				<img src="~/images/739244.png" width="7%" />
+				<img src="~/images/microsoftteams-image (7).png" width="7%" />
+				<img src="~/images/microsoftteams-image (6).png" width="7%" />
+				<img src="~/images/twitter-logо.png" width="6%" />
+			</div>
+			<div class="nav-right" style="flex-direction:column; padding-left:20%;">
+				<p>Kontaktuppgifter</p>
+				<p>Solnavägen 3H<br/>113 63 Stockholm</p>
+				<p>PickApp@@gmail.com <br />0771xxxxxx</p>
+			</div>
+		</div>
+		<hr />
+		<div style="padding: 1%">© 2023 PickApp</div>
 	</footer>
 </body>
 @RenderSection("scripts", false)
