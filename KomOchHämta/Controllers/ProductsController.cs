@@ -131,5 +131,12 @@ namespace KomOchHämta.Controllers
         {
 			return View();
 		}
-    }
+
+		[HttpGet("/FAQ")]
+		public IActionResult FAQ()
+		{
+			return View();
+		}
+
+	}
 }

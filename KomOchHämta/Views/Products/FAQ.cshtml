@@ -1,0 +1,59 @@
+﻿
+	<div class="AboutUs">
+		<h2>Behöver du Hjälp? Utforska Våra Vanliga Frågor (FAQ)</h2>
+
+		<div class="question" onclick="toggleAnswer(this)">
+		<h4 style="margin-top: 2%">Q: Hur fungerar PickApp?</h4>
+			<div class="answer">
+				<p>Svar: PickApp är en plattform som gör det enkelt för människor att dela och låna artiklar. Du kan skapa ett konto, lista de artiklar du vill dela och boka artiklar som du behöver. När bokningen är gjord får information om näroch var du kan möta upp användaren och genomföra transaktionen.</p>
+			</div>
+		</div>
+		
+		<div class="question" onclick="toggleAnswer(this)">
+		<h4 style="margin-top: 2%">Q: Är PickApp gratis att använda?</h4>
+			<div class="answer">
+				<p>Svar: Ja, PickApp är helt gratis att använda. Vi tror på att göra delning och hållbarhet tillgängligt för alla.</p>
+			</div>
+		</div>
+		
+		<div class="question" onclick="toggleAnswer(this)">
+		<h4 style="margin-top: 2%">Q: Är mina personuppgifter säkra på PickApp?</h4>
+			<div class="answer">
+				<p>Svar: Vi värnar om din integritet. Dina personuppgifter behandlas med högsta säkerhet och delas inte med tredje part.</p>
+			</div>
+		</div>	
+		
+		<div class="question" onclick="toggleAnswer(this)">
+			<h4 style="margin-top: 2%">Q: Vad kan jag lista på PickApp?</h4>
+			<div class="answer">
+				<p>Svar: Du kan lista en mängd olika artiklar på PickApp, inklusive möbler, kläder, elektronik, böcker och mycket mer. Vi uppmuntrar till delning av alla typer av användbara artiklar.</p>
+			</div>
+		</div>
+		
+		<div class="question" onclick="toggleAnswer(this)">
+		<h4 style="margin-top: 2%">Q: Hur kan jag rapportera en olämplig användare eller annat problem?</h4>
+			<div class="answer">
+				<p>Svar: Om du stöter på en olämplig användare eller har problem på plattformen, kontakta vår kundsupport. Vi tar användarnas säkerhet på allvar och kommer att agera vid behov.</p>
+			</div>
+		</div>
+		
+		<div class="question" onclick="toggleAnswer(this)">
+		<h4 style="margin-top: 2%">Q: Kan jag använda PickApp utan att ha en artikel att dela?</h4>
+			<div class="answer">
+				<p>Svar: Ja, du kan använda PickApp för att söka och boka artiklar även om du inte har något att dela för tillfället. Vi välkomnar alla användare som vill dra nytta av delningsekonomin.</p>
+			</div>
+		</div>
+	</div>
+
+<script>
+	function toggleAnswer(question) {
+		const answer = question.querySelector(".answer");
+
+		if (answer.style.display === "none" || answer.style.display === "") {
+			answer.style.display = "block";
+		} else {
+			answer.style.display = "none";
+		}
+	}
+</script>
+

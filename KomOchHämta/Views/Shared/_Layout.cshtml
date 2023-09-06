@@ -281,6 +281,26 @@
 			padding-right: 20%;
 			font-size: 120%;
 		}
+
+		/* --------------------------- */
+		.question {
+			cursor: pointer;
+		}
+
+		.answer {
+			display: none;
+		}
+
+		.question::after {
+			content: "▼";
+			display: inline-block;
+			margin-left: 5px;
+		}
+
+		.question.opened::after {
+			content: "▲";
+		}
+
 	</style>
 </head>
 <body class="body">
@@ -316,7 +336,7 @@
 			<div class="nav-left" style="flex-direction:column; padding-right:20%; align-items: flex-start;">
 				<p>Information</p>
 				<p><a href="AboutUs">Om oss</a></p>
-				<p>FAQ</p>
+				<p><a href="FAQ">FAQ</a></p>
 			</div>
 			<div class="nav-center" style="justify-content: space-evenly; padding: 2%; ">
 				<img src="~/images/739244.png" width="7%" />
